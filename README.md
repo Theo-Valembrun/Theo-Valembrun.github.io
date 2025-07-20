@@ -1,6 +1,6 @@
-# Theo Valembrun - Professional IT Portfolio Website v2.0
+# Theo Valembrun - Professional IT Portfolio Website v2.1
 
-This repository hosts the second generation of my personal portfolio and professional resume website, showcasing my experience, skills, and certifications as an IT Specialist, Network Engineer, System Administrator, and Cybersecurity Professional.
+This repository hosts the professional portfolio and resume website showcasing my experience, skills, and certifications as an IT Specialist, Network Engineer, System Administrator, and Cybersecurity Professional. Version 2.1 adds comprehensive analytics tracking and GDPR compliance features.
 
 ## 🚀 Features
 
@@ -12,6 +12,8 @@ This repository hosts the second generation of my personal portfolio and profess
 * **Dark/Light Mode Toggle:** Advanced theme switching with user preference persistence and system preference detection for optimal user experience.
 
 * **Interactive Contact System:** Direct email and phone integration with professional contact cards, removing the need for complex form backends while maintaining functionality.
+
+* **Analytics & Compliance:** Professional Google Analytics 4 tracking with Cookiebot consent management for GDPR compliance and comprehensive user behavior insights.
 
 ### Enhanced User Experience
 * **Performance Optimized:** Fast loading times with preloaded critical resources, optimized images, and efficient CSS/JS delivery.
@@ -44,6 +46,12 @@ This repository hosts the second generation of my personal portfolio and profess
 * **AOS Library:** Scroll-triggered animations
 * **CSS Grid & Flexbox:** Advanced layout systems
 
+### Analytics & Tracking
+* **Google Analytics 4:** Professional visitor tracking and behavior analysis
+* **Cookiebot:** EU GDPR compliant cookie consent management
+* **Enhanced Events:** Comprehensive user interaction monitoring
+* **Privacy-First:** Respects Do Not Track and user preferences
+
 ### Performance & Optimization
 * **Resource Preloading:** Critical CSS and font preloading
 * **Mobile-First Approach:** Progressive enhancement for optimal mobile performance
@@ -67,7 +75,7 @@ This repository hosts the second generation of my personal portfolio and profess
    - Simply open `index.html` in your preferred web browser
 
 ### Live Demo
-Visit the live website at: theovalembrun.live
+Visit the live website at: **https://theovalembrun.live**
 
 ## 📱 Browser Compatibility
 
@@ -86,7 +94,16 @@ This v2.0 portfolio embraces:
 * **Modern Web Standards:** Progressive enhancement and accessibility-first approach
 * **Performance-First:** Optimized for speed without sacrificing visual appeal
 
-## 🔄 Version 2.0 Improvements
+## 🔄 Version 2.1 Updates
+
+### New in v2.1 (July 2025)
+* **Professional Analytics:** Google Analytics 4 integration with comprehensive event tracking
+* **GDPR Compliance:** Cookiebot consent management for European visitors
+* **Enhanced Tracking:** User behavior analysis including navigation patterns, contact interactions, and engagement metrics
+* **Privacy-First:** Respects user preferences and Do Not Track signals
+* **Real-Time Insights:** Professional visitor analytics for portfolio optimization
+
+### Version 2.0 Improvements
 
 ### From Version 1.0
 * **Complete Redesign:** Modern card-based layout with improved visual hierarchy
