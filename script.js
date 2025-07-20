@@ -704,7 +704,186 @@ if (document.readyState === 'loading') {
     new PortfolioApp();
 }
 
+// Google Analytics Enhanced Tracking
+class AnalyticsTracker {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        if (typeof gtag !== 'undefined') {
+            this.setupEventTracking();
+        }
+    }
+
+    setupEventTracking() {
+        // Track navigation clicks
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const section = e.target.getAttribute('href').substring(1);
+                this.trackEvent('navigation_click', {
+                    section_name: section,
+                    link_text: e.target.textContent
+                });
+            });
+        });
+
+        // Track contact button clicks
+        document.querySelectorAll('.contact-link, .btn[href*="mailto"], .btn[href*="tel"]').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const contactType = e.target.href.includes('mailto') ? 'email' : 
+                                  e.target.href.includes('tel') ? 'phone' : 'contact';
+                this.trackEvent('contact_interaction', {
+                    contact_method: contactType,
+                    button_text: e.target.textContent
+                });
+            });
+        });
+
+        // Track social media clicks
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const platform = e.target.href.includes('linkedin') ? 'linkedin' : 
+                               e.target.href.includes('github') ? 'github' : 'social';
+                this.trackEvent('social_click', {
+                    platform: platform,
+                    outbound: true
+                });
+            });
+        });
+
+        // Track project interactions
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const projectTitle = card.querySelector('h3')?.textContent || 'Unknown Project';
+                this.trackEvent('project_view', {
+                    project_name: projectTitle
+                });
+            });
+        });
+
+        // Track skill card interactions
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const skillName = card.querySelector('h3')?.textContent || 'Unknown Skill';
+                this.trackEvent('skill_hover', {
+                    skill_name: skillName
+                });
+            });
+        });
+
+        // Track theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                this.trackEvent('theme_toggle', {
+                    from_theme: currentTheme,
+                    to_theme: newTheme
+                });
+            });
+        }
+
+        // Track scroll depth
+        this.trackScrollDepth();
+
+        // Track time on page
+        this.trackTimeOnPage();
+    }
+
+    trackEvent(eventName, parameters = {}) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', eventName, {
+                ...parameters,
+                timestamp: new Date().toISOString()
+            });
+        }
+    }
+
+    trackScrollDepth() {
+        const scrollDepths = [25, 50, 75, 90];
+        const trackedDepths = new Set();
+
+        window.addEventListener('scroll', this.throttle(() => {
+            const scrollPercent = Math.round(
+                (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+            );
+
+            scrollDepths.forEach(depth => {
+                if (scrollPercent >= depth && !trackedDepths.has(depth)) {
+                    trackedDepths.add(depth);
+                    this.trackEvent('scroll_depth', {
+                        scroll_depth: depth,
+                        page_height: document.documentElement.scrollHeight
+                    });
+                }
+            });
+        }, 500));
+    }
+
+    trackTimeOnPage() {
+        const startTime = Date.now();
+        
+        // Track time intervals
+        const intervals = [30, 60, 120, 300]; // 30s, 1m, 2m, 5m
+        const trackedIntervals = new Set();
+
+        const trackInterval = () => {
+            const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+            
+            intervals.forEach(interval => {
+                if (timeOnPage >= interval && !trackedIntervals.has(interval)) {
+                    trackedIntervals.add(interval);
+                    this.trackEvent('time_on_page', {
+                        time_threshold: interval,
+                        total_time: timeOnPage
+                    });
+                }
+            });
+        };
+
+        setInterval(trackInterval, 10000); // Check every 10 seconds
+
+        // Track when user leaves
+        window.addEventListener('beforeunload', () => {
+            const totalTime = Math.round((Date.now() - startTime) / 1000);
+            this.trackEvent('page_exit', {
+                total_time_on_page: totalTime
+            });
+        });
+    }
+
+    throttle(func, delay) {
+        let timeoutId;
+        let lastExecTime = 0;
+        return function (...args) {
+            const currentTime = Date.now();
+            
+            if (currentTime - lastExecTime > delay) {
+                func.apply(this, args);
+                lastExecTime = currentTime;
+            } else {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args);
+                    lastExecTime = Date.now();
+                }, delay - (currentTime - lastExecTime));
+            }
+        };
+    }
+}
+
+// Initialize Analytics Tracking
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new AnalyticsTracker();
+    });
+} else {
+    new AnalyticsTracker();
+}
+
 // Export for testing purposes
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = PortfolioApp;
+    module.exports = { PortfolioApp, AnalyticsTracker };
 }
