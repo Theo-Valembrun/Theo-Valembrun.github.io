@@ -3,39 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Theo Valembrun - Modern IT Specialist Portfolio showcasing network operations, system administration, and cybersecurity expertise">
-    <meta name="keywords" content="IT Specialist, Network Engineer, System Administrator, Cybersecurity, Portfolio, Theo Valembrun">
+    <meta name="description" content="Theo Valembrun - IT Specialist Portfolio. Expert in network operations, Cisco infrastructure, system administration, and cybersecurity solutions.">
+    <meta name="keywords" content="IT Specialist, Network Engineer, System Administrator, Cybersecurity, Cisco, Azure, Portfolio, Theo Valembrun, Haiti IT">
     <meta name="author" content="Theo Valembrun">
     <meta name="theme-color" content="#6366f1">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://theovalembrun.com/">
+    <meta property="og:title" content="Theo Valembrun | IT Specialist & Network Engineer">
+    <meta property="og:description" content="Building the future of IT infrastructure with expertise in Cisco, Azure, and Cybersecurity.">
+    <meta property="og:image" content="assets/img/Theo Valembrun Headshot.jpg">
+
     <title>Theo Valembrun | IT Specialist Portfolio</title>
     
-    <!-- Cookiebot Consent Management -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Theo Valembrun",
+      "jobTitle": "IT Specialist",
+      "url": "https://theovalembrun.com",
+      "sameAs": [
+        "https://linkedin.com/in/theovalembrun/",
+        "https://github.com/Theo-Valembrun"
+      ],
+      "knowsAbout": ["Network Engineering", "System Administration", "Cybersecurity", "Cisco", "Azure"]
+    }
+    </script>
+
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="20ee15d8-156d-40f3-a745-dbedd39f4bb5" type="text/javascript" async></script>
     
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8YF5MV8NJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-N8YF5MV8NJ');
     </script>
     
-    <!-- Preload critical resources -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="icons8-wired-network-16.png">
 </head>
 <body>
-    <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loader">
             <div class="loader-ring"></div>
@@ -43,10 +60,9 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
         <div class="nav-container">
-            <a href="#home" class="nav-brand">
+            <a href="#home" class="nav-brand" aria-label="Home">
                 <span class="brand-icon">T</span>
                 <span class="brand-text">Theo Valembrun</span>
             </a>
@@ -62,10 +78,10 @@
             </div>
             
             <div class="nav-controls">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -74,9 +90,7 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-background">
                 <div class="hero-particles"></div>
@@ -122,17 +136,11 @@
                     </div>
                     <div class="hero-visual" data-aos="fade-left" data-aos-delay="500">
                         <div class="hero-image">
-                            <img src="assets/img/Theo Valembrun Headshot.jpg" alt="Theo Valembrun - IT Specialist" class="profile-image">
+                            <img src="assets/img/Theo Valembrun Headshot.jpg" loading="lazy" alt="Headshot of Theo Valembrun" class="profile-image">
                             <div class="floating-elements">
-                                <div class="floating-tech">
-                                    <i class="fab fa-cisco"></i>
-                                </div>
-                                <div class="floating-tech">
-                                    <i class="fab fa-microsoft"></i>
-                                </div>
-                                <div class="floating-tech">
-                                    <i class="fas fa-network-wired"></i>
-                                </div>
+                                <div class="floating-tech" aria-hidden="true"><i class="fab fa-cisco"></i></div>
+                                <div class="floating-tech" aria-hidden="true"><i class="fab fa-microsoft"></i></div>
+                                <div class="floating-tech" aria-hidden="true"><i class="fas fa-network-wired"></i></div>
                             </div>
                         </div>
                     </div>
@@ -145,7 +153,6 @@
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about" class="about">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -170,10 +177,6 @@
                                 top-tier technical support. My expertise spans network service provisioning, system administration, 
                                 and enhancing security for enterprise clients, consistently achieving 99.5% network uptime.
                             </p>
-                            <p>
-                                Currently pursuing advanced certifications including CCNA, Microsoft Azure, and CompTIA Security+, 
-                                I'm committed to staying at the forefront of technological innovation and best practices.
-                            </p>
                         </div>
                         
                         <div class="about-highlights">
@@ -181,8 +184,8 @@
                                 <i class="fas fa-graduation-cap"></i>
                                 <div>
                                     <h4>Education</h4>
-                                    <p>Bachelor's in Computer Science (In Progress)</p>
-                                    <p>Associate's in Computer Networking</p>
+                                    <p>B.S. Computer Science (In Progress)</p>
+                                    <p>A.S. Computer Networking</p>
                                 </div>
                             </div>
                             <div class="highlight-item">
@@ -190,7 +193,7 @@
                                 <div>
                                     <h4>Certifications</h4>
                                     <p>5 Completed, 4 In Progress</p>
-                                    <p>Cisco, Microsoft, Google certified</p>
+                                    <p>Cisco, Microsoft, Google Certified</p>
                                 </div>
                             </div>
                         </div>
@@ -222,7 +225,6 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills" class="skills">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -235,507 +237,264 @@
                 
                 <div class="skills-grid">
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="skill-icon">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
                         <h3>Network Infrastructure</h3>
                         <p>Advanced networking protocols, routing, switching, and network security implementation</p>
                         <div class="skill-tech">
-                            <span>Cisco</span>
-                            <span>BGP/OSPF</span>
-                            <span>VPN</span>
-                            <span>DNS/DHCP</span>
+                            <span>Cisco</span><span>BGP/OSPF</span><span>VPN</span><span>DNS/DHCP</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="90"></div>
+                            <div class="progress-bar" style="width: 90%" aria-label="90% proficiency" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="skill-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-server"></i></div>
                         <h3>System Administration</h3>
                         <p>Server management, virtualization, and enterprise system deployment</p>
                         <div class="skill-tech">
-                            <span>Windows Server</span>
-                            <span>Linux</span>
-                            <span>Active Directory</span>
-                            <span>Group Policy</span>
+                            <span>Windows Server</span><span>Linux</span><span>Active Directory</span><span>Group Policy</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="85"></div>
+                            <div class="progress-bar" style="width: 85%" aria-label="85% proficiency" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="skill-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
                         <h3>Cybersecurity</h3>
                         <p>Security protocols, threat assessment, and incident response management</p>
                         <div class="skill-tech">
-                            <span>Firewalls</span>
-                            <span>IDS/IPS</span>
-                            <span>Security Auditing</span>
-                            <span>Compliance</span>
+                            <span>Firewalls</span><span>IDS/IPS</span><span>Security Auditing</span><span>Compliance</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="80"></div>
+                            <div class="progress-bar" style="width: 80%" aria-label="80% proficiency" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="skill-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-cloud"></i></div>
                         <h3>Cloud Technologies</h3>
                         <p>Cloud infrastructure management and deployment strategies</p>
                         <div class="skill-tech">
-                            <span>Microsoft Azure</span>
-                            <span>Virtual Networks</span>
-                            <span>Identity Management</span>
-                            <span>Cloud Security</span>
+                            <span>Microsoft Azure</span><span>Virtual Networks</span><span>Identity Management</span><span>Cloud Security</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="75"></div>
+                            <div class="progress-bar" style="width: 75%" aria-label="75% proficiency" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="skill-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
                         <h3>Monitoring & Analytics</h3>
                         <p>Network monitoring, performance analysis, and optimization</p>
                         <div class="skill-tech">
-                            <span>SolarWinds</span>
-                            <span>PRTG</span>
-                            <span>SNMP</span>
-                            <span>Performance Tuning</span>
+                            <span>SolarWinds</span><span>PRTG</span><span>SNMP</span><span>Performance Tuning</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="88"></div>
+                            <div class="progress-bar" style="width: 88%" aria-label="88% proficiency" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
-                        <div class="skill-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-headset"></i></div>
                         <h3>Technical Support</h3>
                         <p>Customer service, ticketing systems, and issue resolution</p>
                         <div class="skill-tech">
-                            <span>Zendesk</span>
-                            <span>ServiceDesk</span>
-                            <span>Remote Support</span>
-                            <span>Documentation</span>
+                            <span>Zendesk</span><span>ServiceDesk</span><span>Remote Support</span><span>Documentation</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="95"></div>
+                            <div class="progress-bar" style="width: 95%" aria-label="95% proficiency" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="projects">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <span class="section-tag">Portfolio</span>
-                    <h2 class="section-title">Featured Projects & Achievements</h2>
-                    <p class="section-subtitle">
-                        Showcasing real-world implementations and technical solutions
-                    </p>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Real-world implementations and technical solutions</p>
                 </div>
                 
                 <div class="projects-grid">
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="project-image">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="#" class="project-link" aria-label="View details">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
+                                    <a href="#" class="project-link" aria-label="View Project Details"><i class="fas fa-external-link-alt"></i></a>
                                 </div>
                             </div>
-                            <div class="project-placeholder">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
+                            <div class="project-placeholder"><i class="fas fa-chart-line"></i></div>
                         </div>
                         <div class="project-content">
-                            <h3>Network Monitoring & Troubleshooting</h3>
-                            <p>Deployed comprehensive network infrastructure with VMware vSphere ESXi 7, implementing Active Directory domain management and optimizing network performance monitoring.</p>
+                            <h3>Network Monitoring System</h3>
+                            <p>Deployed comprehensive network infrastructure with VMware vSphere ESXi 7, implementing Active Directory and optimizing PRTG monitoring.</p>
                             <div class="project-tech">
-                                <span>VMware ESXi 7</span>
-                                <span>Active Directory</span>
-                                <span>PRTG</span>
-                                <span>GLPI</span>
-                                <span>DNS/DHCP</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <span class="stat-value">Jul-Aug</span>
-                                    <span class="stat-label">2023</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-value">100%</span>
-                                    <span class="stat-label">Monitoring Coverage</span>
-                                </div>
+                                <span>VMware ESXi</span><span>Active Directory</span><span>PRTG</span>
                             </div>
                         </div>
-                    </div>
+                    </article>
+
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link" aria-label="View Project Details"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="project-placeholder"><i class="fas fa-network-wired"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Multi-Branch Connectivity</h3>
+                            <p>Designed secure architecture across multiple branch offices using Cisco routers, GRE Tunneling, and VPNs.</p>
+                            <div class="project-tech">
+                                <span>Cisco</span><span>GRE Tunneling</span><span>VPN</span><span>Firewall</span>
+                            </div>
+                        </div>
+                    </article>
                     
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="project-image">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="#" class="project-link" aria-label="View details">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
+                                    <a href="#" class="project-link" aria-label="View Project Details"><i class="fas fa-external-link-alt"></i></a>
                                 </div>
                             </div>
-                            <div class="project-placeholder">
-                                <i class="fas fa-network-wired"></i>
-                            </div>
+                            <div class="project-placeholder"><i class="fas fa-headset"></i></div>
                         </div>
                         <div class="project-content">
-                            <h3>Multi-Branch Network Implementation</h3>
-                            <p>Designed and implemented secure network architecture across multiple branch offices with VPN connections, server infrastructure, and comprehensive cybersecurity measures.</p>
+                            <h3>Support Desk Optimization</h3>
+                            <p>Streamlined support processes serving 500+ users, achieving a 95% satisfaction rate via Zendesk integration.</p>
                             <div class="project-tech">
-                                <span>Cisco Routers</span>
-                                <span>Layer 2/3 Switches</span>
-                                <span>GRE Tunneling</span>
-                                <span>Firewalls</span>
-                                <span>VPN</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <span class="stat-value">Aug-Sep</span>
-                                    <span class="stat-label">2023</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-value">Multi-Branch</span>
-                                    <span class="stat-label">Connectivity</span>
-                                </div>
+                                <span>Zendesk</span><span>SLA Management</span><span>Automation</span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="project-image">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="#" class="project-link" aria-label="View details">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="project-placeholder">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Customer Support Optimization</h3>
-                            <p>Streamlined support processes across multiple platforms, serving 500+ users with 95% satisfaction rate and reduced resolution time.</p>
-                            <div class="project-tech">
-                                <span>Zendesk</span>
-                                <span>Multi-channel Support</span>
-                                <span>Process Optimization</span>
-                                <span>SLA Management</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <span class="stat-value">95%</span>
-                                    <span class="stat-label">Satisfaction</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-value">500+</span>
-                                    <span class="stat-label">Users Supported</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
         <section id="experience" class="experience">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <span class="section-tag">Career Journey</span>
                     <h2 class="section-title">Professional Experience</h2>
-                    <p class="section-subtitle">
-                        A progressive career in IT infrastructure and network operations
-                    </p>
                 </div>
                 
                 <div class="timeline">
-                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="50">
-                        <div class="timeline-marker">
-                            <div class="timeline-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                        </div>
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-marker"><div class="timeline-icon"><i class="fas fa-video"></i></div></div>
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <h3>CCTV Technician</h3>
                                 <span class="timeline-company">Brasserie de la Couronne S.A.</span>
-                                <span class="timeline-period">Oct 2025 - Present</span>
+                                <span class="timeline-period"><time datetime="2025-10">Oct 2025</time> - Present</span>
                             </div>
-                            <p>Installing, maintaining, and planning enterprise CCTV deployments and supporting network infrastructure for a large-scale beverage facility, securing remote access and storage in line with site security policies.</p>
-                            <ul class="timeline-achievements">
-                                <li>Mounted IP cameras, ran Ethernet cabling, and configured NVRs with secure remote-access gateways to deliver high-quality video feeds.</li>
-                                <li>Diagnosed image loss and hardware faults, repaired terminations, staged firmware updates, and hardened storage retention policies to keep surveillance online.</li>
-                                <li>Designed rollout plans, optimized camera placement, and tuned motion profiles while balancing PoE loads, VLAN segmentation, and storage capacity.</li>
-                            </ul>
-                            <div class="timeline-tech">
-                                <span>Video Surveillance</span>
-                                <span>PoE Switching</span>
-                                <span>VLAN Design</span>
-                                <span>Network Video Recorders</span>
-                                <span>Structured Cabling</span>
-                            </div>
+                            <p>Installing and maintaining enterprise CCTV deployments and network infrastructure for large-scale facilities.</p>
                         </div>
                     </div>
+
                     <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="timeline-marker">
-                            <div class="timeline-icon">
-                                <i class="fas fa-network-wired"></i>
-                            </div>
-                        </div>
+                        <div class="timeline-marker"><div class="timeline-icon"><i class="fas fa-network-wired"></i></div></div>
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <h3>FWI CCTECH B2B/ICT Executive</h3>
                                 <span class="timeline-company">Digicel Group</span>
-                                <span class="timeline-period">Aug 2024 - Oct 2025</span>
+                                <span class="timeline-period"><time datetime="2024-08">Aug 2024</time> - <time datetime="2025-10">Oct 2025</time></span>
                             </div>
-                            <p>Leading network infrastructure management for enterprise clients, ensuring optimal performance and security of critical business systems.</p>
-                            <ul class="timeline-achievements">
-                                <li>Maintained 99.5% network uptime for 50+ B2B clients</li>
-                                <li>Monitored critical IT infrastructure proactively to prevent outages and minimize user disruption, ensuring high system availability.</li>
-                                <li>Collaborated with field engineers and external providers for swift issue resolution</li>
-                            </ul>
-                            <div class="timeline-tech">
-                                <span>SolarWinds</span>
-                                <span>Zendesk</span>
-                                <span>Network Security</span>
-                                <span>VPN Management</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                        <div class="timeline-marker">
-                            <div class="timeline-icon">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>BPO Digital Agent</h3>
-                                <span class="timeline-company">Digicel Group</span>
-                                <span class="timeline-period">Jun 2024 - Jul 2024</span>
-                            </div>
-                            <p>Delivered exceptional customer support via digital platforms, focusing on service quality and customer satisfaction.</p>
-                            <ul class="timeline-achievements">
-                                <li>Achieved 95% customer satisfaction rating</li>
-                                <li>Handled 50+ daily customer interactions across multiple channels</li>
-                                <li>Contributed to process improvements increasing team efficiency</li>
-                            </ul>
-                            <div class="timeline-tech">
-                                <span>ServiceDesk</span>
-                                <span>Live Chat</span>
-                                <span>CRM Systems</span>
-                                <span>Ticketing</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
-                        <div class="timeline-marker">
-                            <div class="timeline-icon">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Customer Care Agent</h3>
-                                <span class="timeline-company">Digicel Group</span>
-                                <span class="timeline-period">Feb 2023 - May 2024</span>
-                            </div>
-                            <p>Provided comprehensive customer support across multiple platforms, building strong foundation in technical communication.</p>
-                            <ul class="timeline-achievements">
-                                <li>Supported 500+ customers across phone and digital channels</li>
-                                <li>Maintained detailed interaction records improving service quality</li>
-                                <li>Consistently met SLA requirements with 98% on-time resolution</li>
-                            </ul>
-                            <div class="timeline-tech">
-                                <span>Multi-channel Support</span>
-                                <span>Social Media</span>
-                                <span>Documentation</span>
-                                <span>Process Improvement</span>
-                            </div>
+                            <p>Managed network infrastructure for enterprise clients, maintaining 99.5% uptime for 50+ B2B clients.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Certifications Section -->
         <section id="certifications" class="certifications">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <span class="section-tag">Credentials</span>
                     <h2 class="section-title">Professional Certifications</h2>
-                    <p class="section-subtitle">
-                        Continuous learning and professional development in cutting-edge technologies
-                    </p>
                 </div>
                 
                 <div class="certifications-grid">
-                    <div class="cert-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="cert-category" data-aos="fade-up">
                         <h3>In Progress</h3>
                         <div class="cert-items">
-                            <div class="cert-item">
-                                <div class="cert-icon">
-                                    <i class="fas fa-network-wired"></i>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>Cisco Certified Network Associate (CCNA)</h4>
-                                    <span class="cert-date">In Progress</span>
-                                </div>
-                            </div>
-                            <div class="cert-item">
-                                <div class="cert-icon">
-                                    <i class="fab fa-microsoft"></i>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>Microsoft Azure Administrator Associate (AZ-104)</h4>
-                                    <span class="cert-date">In Progress</span>
-                                </div>
-                            </div>
-                            <div class="cert-item">
-                                <div class="cert-icon">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>CompTIA Security+ (SY0-701)</h4>
-                                    <span class="cert-date">In Progress</span>
-                                </div>
-                            </div>
-                            <div class="cert-item">
-                                <div class="cert-icon">
-                                    <i class="fas fa-sitemap"></i>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>ITIL 4 Foundation</h4>
-                                    <span class="cert-date">In Progress</span>
-                                </div>
-                            </div>
+                            <div class="cert-item"><div class="cert-icon"><i class="fas fa-network-wired"></i></div><div class="cert-info"><h4>CCNA</h4><span class="cert-date">In Progress</span></div></div>
+                            <div class="cert-item"><div class="cert-icon"><i class="fab fa-microsoft"></i></div><div class="cert-info"><h4>Azure Admin (AZ-104)</h4><span class="cert-date">In Progress</span></div></div>
+                            <div class="cert-item"><div class="cert-icon"><i class="fas fa-shield-alt"></i></div><div class="cert-info"><h4>CompTIA Security+</h4><span class="cert-date">In Progress</span></div></div>
                         </div>
                     </div>
-                    
-                    <div class="cert-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="cert-category" data-aos="fade-up" data-aos-delay="100">
                         <h3>Completed</h3>
                         <div class="cert-items">
-                            <div class="cert-item completed">
-                                <div class="cert-icon">
-                                    <i class="fab fa-microsoft"></i>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>Career Essentials in System Administration</h4>
-                                    <span class="cert-date">February 2024</span>
-                                </div>
-                            </div>
-                            <div class="cert-item completed">
-                                <div class="cert-icon">
-                                    <i class="fas fa-network-wired"></i>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>CCNA: Enterprise Networking, Security, and Automation</h4>
-                                    <span class="cert-date">November 2023</span>
-                                </div>
-                            </div>
-                            <div class="cert-item completed">
-                                <div class="cert-icon">
-                                    <i class="fas fa-route"></i>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>CCNA: Switching, Routing, and Wireless Essentials</h4>
-                                    <span class="cert-date">November 2023</span>
-                                </div>
-                            </div>
-                            <div class="cert-item completed">
-                                <div class="cert-icon">
-                                    <i class="fas fa-globe"></i>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>CCNA: Introduction to Networks</h4>
-                                    <span class="cert-date">October 2023</span>
-                                </div>
-                            </div>
-                            <div class="cert-item completed">
-                                <div class="cert-icon">
-                                    <i class="fab fa-google"></i>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>Google IT Support Professional Certificate</h4>
-                                    <span class="cert-date">September 2022</span>
-                                </div>
-                            </div>
+                            <div class="cert-item completed"><div class="cert-icon"><i class="fas fa-network-wired"></i></div><div class="cert-info"><h4>CCNA: Enterprise Networking</h4><span class="cert-date">Nov 2023</span></div></div>
+                            <div class="cert-item completed"><div class="cert-icon"><i class="fab fa-google"></i></div><div class="cert-info"><h4>Google IT Support</h4><span class="cert-date">Sep 2022</span></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="contact">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="section-tag">Get In Touch</span>
-                    <h2 class="section-title">Let's Work Together</h2>
-                    <p class="section-subtitle">
-                        Ready to discuss your next project or explore collaboration opportunities
-                    </p>
-                        <div class="contact-cta">
-                            <h3>Ready to get started?</h3>
-                            <p>Choose your preferred way to reach out, and I'll get back to you as soon as possible.</p>
-                            <div class="cta-buttons">
-                                <a href="mailto:theo.valembrun@ieee.org" class="btn btn-primary">
-                                    <i class="fas fa-envelope"></i>
-                                    Email Me
-                                </a>
-                                <a href="tel:+50935419554" class="btn btn-secondary">
-                                    <i class="fas fa-phone"></i>
-                                    Call Me
-                                </a>
-                            </div>
-                        </div>
+                <div class="contact-wrapper" style="margin-top: 50px;">
+                    <div class="contact-info-card" data-aos="fade-right">
+                        <h3>Contact Information</h3>
+                        <p>Feel free to reach out via email or phone. I am available for new opportunities.</p>
                         
-                        <div class="social-links">
-                            <h4>Connect with me</h4>
-                            <div class="social-items">
-                                <a href="https://linkedin.com/in/theovalembrun/" target="_blank" class="social-link" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                    <span>LinkedIn</span>
-                                </a>
-                                <a href="https://github.com/Theo-Valembrun" target="_blank" class="social-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                    <span>GitHub</span>
-                                </a>
+                        <address class="contact-details">
+                            <div class="contact-detail-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:theo.valembrun@ieee.org">theo.valembrun@ieee.org</a>
                             </div>
+                            <div class="contact-detail-item">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+50935419554">+509 35 41 9554</a>
+                            </div>
+                            <div class="contact-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Haiti (Open to Remote/Relocation)</span>
+                            </div>
+                        </address>
+
+                        <div class="social-links-row">
+                            <a href="https://linkedin.com/in/theovalembrun/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/Theo-Valembrun" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
+                    </div>
+
+                    <div class="contact-form-card" data-aos="fade-left">
+                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="modern-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="How can I help you?" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Send Message <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -743,16 +502,10 @@
                     <span class="brand-icon">T</span>
                     <span class="brand-text">Theo Valembrun</span>
                 </div>
-                <p class="footer-text">
-                    Building the future of IT infrastructure, one solution at a time.
-                </p>
                 <div class="footer-links">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
                     <a href="#projects">Projects</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#certifications">Certifications</a>
                     <a href="#contact">Contact</a>
                 </div>
             </div>
@@ -763,12 +516,14 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <button class="back-to-top" id="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
