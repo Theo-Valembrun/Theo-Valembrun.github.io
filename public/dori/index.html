@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>CCTV Lens &amp; DORI Calculator</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A simple fade-in animation for the result */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .result-animation {
+            animation: fadeIn 0.3s ease-out;
+        }
+        .lang-toggle {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans p-4 md:p-8">
+
+    <div class="bg-gray-800 p-6 md:p-8 rounded-2xl shadow-2xl w-full max-w-4xl mx-auto">
+        <!-- Language Toggle -->
+        <div class="flex justify-end mb-4">
+            <button id="langToggle" class="lang-toggle flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition shadow-md">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                </svg>
+                <span id="langText">FR</span>
+            </button>
+        </div>
+        
+        <h1 class="text-3xl font-bold text-center text-blue-400 mb-6" data-en="CCTV Lens &amp; DORI Calculator" data-fr="Calculateur d'Objectif CCTV &amp; DORI">
+            CCTV Lens &amp; DORI Calculator
+        </h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Column 1: Lens Calculator -->
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <h2 class="text-2xl font-semibold text-center text-blue-300 mb-6" data-en="Lens Calculator" data-fr="Calculateur d'Objectif">Lens Calculator</h2>
+                <p class="text-center text-gray-400 mb-6 text-sm" data-en="Enter any two values to calculate the third." data-fr="Entrez deux valeurs pour calculer la troisième.">
+                    Enter any two values to calculate the third.
+                </p>
+
+                <div class="space-y-5">
+                    <!-- Sensor Size Input -->
+                    <div>
+                        <label for="sensorSize" class="block text-sm font-medium text-gray-300 mb-2" data-en="Camera Sensor Size" data-fr="Taille du Capteur de Caméra">
+                            Camera Sensor Size
+                        </label>
+                        <select id="sensorSize" class="w-full p-3 bg-gray-700 text-white rounded-lg border-2 border-gray-600 focus:border-blue-500 focus:ring-blue-500 outline-none transition">
+                            <option value="7.18">1/1.8" (7.18 mm wide)</option>
+                            <option value="5.37">1/2.7" (5.37 mm wide)</option>
+                            <option value="5.18">1/2.8" (5.18 mm wide)</option>
+                            <option value="4.80">1/3" (4.80 mm wide)</option>
+                            <option value="3.60">1/4" (3.60 mm wide)</option>
+                        </select>
+                    </div>
+
+                    <!-- Focal Length Input -->
+                    <div>
+                        <label for="focalLength" class="block text-sm font-medium text-gray-300 mb-2" data-en="Focal Length (mm)" data-fr="Longueur Focale (mm)">
+                            Focal Length (mm)
+                        </label>
+                        <input type="number" id="focalLength" placeholder="e.g., 4" class="w-full p-3 bg-gray-700 text-white rounded-lg border-2 border-gray-600 focus:border-blue-500 focus:ring-blue-500 outline-none transition">
+                    </div>
+
+                    <!-- Distance to Target Input -->
+                    <div>
+                        <label for="distance" class="block text-sm font-medium text-gray-300 mb-2" data-en="Distance to Target (meters/feet)" data-fr="Distance à la Cible (mètres/pieds)">
+                            Distance to Target (meters/feet)
+                        </label>
+                        <input type="number" id="distance" placeholder="e.g., 10" class="w-full p-3 bg-gray-700 text-white rounded-lg border-2 border-gray-600 focus:border-blue-500 focus:ring-blue-500 outline-none transition">
+                    </div>
+
+                    <!-- Scene Width Input -->
+                    <div>
+                        <label for="sceneWidth" class="block text-sm font-medium text-gray-300 mb-2" data-en="Scene Width (meters/feet)" data-fr="Largeur de la Scène (mètres/pieds)">
+                            Scene Width (meters/feet)
+                        </label>
+                        <input type="number" id="sceneWidth" placeholder="e.g., 5" class="w-full p-3 bg-gray-700 text-white rounded-lg border-2 border-gray-600 focus:border-blue-500 focus:ring-blue-500 outline-none transition">
+                    </div>
+                </div>
+
+                <!-- Calculation Buttons -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                    <button id="calcFocal" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition shadow-md" data-en="Calc Focal" data-fr="Calc Focale">
+                        Calc Focal
+                    </button>
+                    <button id="calcDistance" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition shadow-md" data-en="Calc Distance" data-fr="Calc Distance">
+                        Calc Distance
+                    </button>
+                    <button id="calcWidth" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition shadow-md" data-en="Calc Scene Width" data-fr="Calc Largeur">
+                        Calc Scene Width
+                    </button>
+                </div>
+                
+                <!-- Result Display -->
+                <div id="result" class="mt-6 p-4 bg-gray-900 rounded-lg text-lg text-center font-mono h-16 flex items-center justify-center" data-en="Enter values and choose a calculation." data-fr="Entrez des valeurs et choisissez un calcul.">
+                    Enter values and choose a calculation.
+                </div>
+
+            </div>
+
+            <!-- Column 2: DORI Calculator -->
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <h2 class="text-2xl font-semibold text-center text-teal-300 mb-6" data-en="DORI Calculator" data-fr="Calculateur DORI">DORI Calculator</h2>
+                <p class="text-center text-gray-400 mb-6 text-sm" data-en="Finds the distances for D, O, R, and I based on your lens and resolution." data-fr="Trouve les distances pour D, O, R et I selon votre objectif et résolution.">
+                    Finds the distances for D, O, R, and I based on your lens and resolution.
+                </p>
+
+                <div class="space-y-5">
+                    <!-- Units Input -->
+                    <div>
+                        <label for="doriUnits" class="block text-sm font-medium text-gray-300 mb-2" data-en="Units" data-fr="Unités">
+                            Units
+                        </label>
+                        <select id="doriUnits" class="w-full p-3 bg-gray-700 text-white rounded-lg border-2 border-gray-600 focus:border-teal-500 focus:ring-teal-500 outline-none transition">
+                            <option value="meters" data-en="Meters (PPM)" data-fr="Mètres (PPM)">Meters (PPM)</option>
+                            <option value="feet" data-en="Feet (PPF)" data-fr="Pieds (PPF)">Feet (PPF)</option>
+                        </select>
+                    </div>
+
+                    <!-- Horizontal Resolution Input -->
+                    <div>
+                        <label for="resolution" class="block text-sm font-medium text-gray-300 mb-2" data-en="Camera Horizontal Resolution (px)" data-fr="Résolution Horizontale Caméra (px)">
+                            Camera Horizontal Resolution (px)
+                        </label>
+                        <select id="resolution" class="w-full p-3 bg-gray-700 text-white rounded-lg border-2 border-gray-600 focus:border-teal-500 focus:ring-teal-500 outline-none transition">
+                            <option value="1280">720p (HD) · 1280 x 720 · 16:9</option>
+                            <option value="1280">960p · 1280 x 960 · 4:3</option>
+                            <option value="1920">1080p (Full HD) · 1920 x 1080 · 16:9</option>
+                            <option value="2048">3 MP · 2048 x 1536 · 4:3</option>
+                            <option value="2304">3 MP (Wide) · 2304 x 1296 · 16:9</option>
+                            <option value="2560">4 MP (QHD) · 2560 x 1440 · 16:9</option>
+                            <option value="2688">4 MP (High) · 2688 x 1520 · 16:9</option>
+                            <option value="2560">5 MP · 2560 x 1920 · 4:3</option>
+                            <option value="2592">5 MP (Wide) · 2592 x 1944 · 4:3</option>
+                            <option value="3072">6 MP · 3072 x 2048 · 3:2</option>
+                            <option value="3840">4K UHD (8 MP) · 3840 x 2160 · 16:9</option>
+                            <option value="4000">12 MP · 4000 x 3000 · 4:3</option>
+                            <option value="7680">8K (32 MP) · 7680 x 4320 · 16:9</option>
+                        </select>
+                    </div>
+                    
+                    <p class="text-sm text-gray-400 pt-4 text-center" data-en="Requires <span class='font-bold text-blue-300'>Focal Length</span> and <span class='font-bold text-blue-300'>Sensor Size</span> from the left panel." data-fr="Nécessite <span class='font-bold text-blue-300'>Longueur Focale</span> et <span class='font-bold text-blue-300'>Taille Capteur</span> du panneau gauche.">
+                        Requires <span class="font-bold text-blue-300">Focal Length</span> and <span class="font-bold text-blue-300">Sensor Size</span> from the left panel.
+                    </p>
+                </div>
+                
+                <!-- DORI Calculate Button -->
+                <div class="mt-8">
+                     <button id="calcDORI" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded-lg transition shadow-md" data-en="Calculate DORI Distances" data-fr="Calculer Distances DORI">
+                        Calculate DORI Distances
+                    </button>
+                </div>
+
+                <!-- DORI Result Display -->
+                <div id="doriResult" class="mt-6 space-y-3">
+                    <div class="p-3 bg-gray-900 rounded-lg flex justify-between items-center">
+                        <span class="font-medium text-green-400" data-en="Detection" data-fr="Détection">Detection</span>
+                        <span id="doriDetect" class="font-mono text-lg">---</span>
+                    </div>
+                    <div class="p-3 bg-gray-900 rounded-lg flex justify-between items-center">
+                        <span class="font-medium text-yellow-400" data-en="Observation" data-fr="Observation">Observation</span>
+                        <span id="doriObserve" class="font-mono text-lg">---</span>
+                    </div>
+                    <div class="p-3 bg-gray-900 rounded-lg flex justify-between items-center">
+                        <span class="font-medium text-orange-400" data-en="Recognition" data-fr="Reconnaissance">Recognition</span>
+                        <span id="doriRecognize" class="font-mono text-lg">---</span>
+                    </div>
+                    <div class="p-3 bg-gray-900 rounded-lg flex justify-between items-center">
+                        <span class="font-medium text-red-400" data-en="Identification" data-fr="Identification">Identification</span>
+                        <span id="doriIdentify" class="font-mono text-lg">---</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <!-- Global Clear Button -->
+        <div class="mt-8">
+            <button id="clearButton" class="w-full bg-gray-600 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded-lg transition shadow-md max-w-lg mx-auto block" data-en="Clear All Fields" data-fr="Effacer Tous les Champs">
+                Clear All Fields
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // --- Language System ---
+        let currentLang = 'en';
+        const langToggleBtn = document.getElementById('langToggle');
+        const langText = document.getElementById('langText');
+
+        const translations = {
+            en: {
+                focalPlaceholder: 'e.g., 4',
+                distancePlaceholder: 'e.g., 10',
+                widthPlaceholder: 'e.g., 5',
+                enterValuesMsg: 'Enter values and choose a calculation.',
+                enterDistanceWidth: 'Enter positive Distance and Width.',
+                enterFocalWidth: 'Enter positive Focal Length and Width.',
+                enterFocalDistance: 'Enter positive Focal Length and Distance.',
+                enterFocal: 'Enter a positive Focal Length first.',
+                focalLengthResult: 'Focal Length:',
+                distanceResult: 'Distance:',
+                sceneWidthResult: 'Scene Width:',
+                doriCalculated: 'DORI distances calculated.',
+                units: '(units)'
+            },
+            fr: {
+                focalPlaceholder: 'ex: 4',
+                distancePlaceholder: 'ex: 10',
+                widthPlaceholder: 'ex: 5',
+                enterValuesMsg: 'Entrez des valeurs et choisissez un calcul.',
+                enterDistanceWidth: 'Entrez Distance et Largeur positives.',
+                enterFocalWidth: 'Entrez Longueur Focale et Largeur positives.',
+                enterFocalDistance: 'Entrez Longueur Focale et Distance positives.',
+                enterFocal: 'Entrez d\'abord une Longueur Focale positive.',
+                focalLengthResult: 'Longueur Focale:',
+                distanceResult: 'Distance:',
+                sceneWidthResult: 'Largeur Scène:',
+                doriCalculated: 'Distances DORI calculées.',
+                units: '(unités)'
+            }
+        };
+
+        function switchLanguage() {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            langText.textContent = currentLang === 'en' ? 'FR' : 'EN';
+            
+            // Update all elements with data-lang attributes
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-fr');
+                if (el.tagName === 'OPTION') {
+                    el.textContent = text;
+                } else if (el.tagName === 'INPUT') {
+                    el.placeholder = text;
+                } else if (text.includes('<span')) {
+                    el.innerHTML = text;
+                } else {
+                    el.textContent = text;
+                }
+            });
+
+            // Update input placeholders
+            document.getElementById('focalLength').placeholder = translations[currentLang].focalPlaceholder;
+            document.getElementById('distance').placeholder = translations[currentLang].distancePlaceholder;
+            document.getElementById('sceneWidth').placeholder = translations[currentLang].widthPlaceholder;
+            
+            // Update result message if it's the default message
+            const resultEl = document.getElementById('result');
+            if (resultEl.textContent.trim() === translations[currentLang === 'en' ? 'fr' : 'en'].enterValuesMsg) {
+                resultEl.textContent = translations[currentLang].enterValuesMsg;
+            }
+        }
+
+        langToggleBtn.addEventListener('click', switchLanguage);
+
+        // --- Get Elements ---
+        const sensorWidthEl = document.getElementById('sensorSize');
+        const focalLengthEl = document.getElementById('focalLength');
+        const distanceEl = document.getElementById('distance');
+        const sceneWidthEl = document.getElementById('sceneWidth');
+        const resultEl = document.getElementById('result');
+
+        const calcFocalButton = document.getElementById('calcFocal');
+        const calcDistanceButton = document.getElementById('calcDistance');
+        const calcWidthButton = document.getElementById('calcWidth');
+        const clearButton = document.getElementById('clearButton');
+
+        // DORI Elements
+        const doriUnitsEl = document.getElementById('doriUnits');
+        const resolutionEl = document.getElementById('resolution');
+        const calcDORIButton = document.getElementById('calcDORI');
+        const doriDetectEl = document.getElementById('doriDetect');
+        const doriObserveEl = document.getElementById('doriObserve');
+        const doriRecognizeEl = document.getElementById('doriRecognize');
+        const doriIdentifyEl = document.getElementById('doriIdentify');
+
+        // DORI Standards (Pixels Per Meter / Pixels Per Foot)
+        const DORI_STANDARDS = {
+            meters: { D: 25, O: 62, R: 125, I: 250 },
+            feet: { D: 8, O: 19, R: 38, I: 76 }
+        };
+        
+        // --- Helper Functions ---
+        
+        function displayResult(message, isError = false) {
+            resultEl.innerHTML = message;
+            resultEl.classList.remove('text-green-400', 'text-red-400', 'result-animation');
+            void resultEl.offsetWidth; // Force reflow
+            resultEl.classList.add(isError ? 'text-red-400' : 'text-green-400', 'result-animation');
+        }
+        
+        function clearDoriResults() {
+            doriDetectEl.textContent = '---';
+            doriObserveEl.textContent = '---';
+            doriRecognizeEl.textContent = '---';
+            doriIdentifyEl.textContent = '---';
+        }
+
+        // --- Lens Calculation Logic ---
+
+        // f = (c * d) / w
+        calcFocalButton.addEventListener('click', () => {
+            const c = parseFloat(sensorWidthEl.value);
+            const d = parseFloat(distanceEl.value);
+            const w = parseFloat(sceneWidthEl.value);
+
+            if (!d || !w || d <= 0 || w <= 0) {
+                displayResult(translations[currentLang].enterDistanceWidth, true);
+                return;
+            }
+
+            const f = (c * d) / w;
+            focalLengthEl.value = f.toFixed(2);
+            displayResult(`${translations[currentLang].focalLengthResult} ${f.toFixed(2)} mm`);
+        });
+
+        // d = (f * w) / c
+        calcDistanceButton.addEventListener('click', () => {
+            const c = parseFloat(sensorWidthEl.value);
+            const f = parseFloat(focalLengthEl.value);
+            const w = parseFloat(sceneWidthEl.value);
+
+            if (!f || !w || f <= 0 || w <= 0) {
+                displayResult(translations[currentLang].enterFocalWidth, true);
+                return;
+            }
+
+            const d = (f * w) / c;
+            distanceEl.value = d.toFixed(2);
+            displayResult(`${translations[currentLang].distanceResult} ${d.toFixed(2)} ${translations[currentLang].units}`);
+        });
+
+        // w = (c * d) / f
+        calcWidthButton.addEventListener('click', () => {
+            const c = parseFloat(sensorWidthEl.value);
+            const f = parseFloat(focalLengthEl.value);
+            const d = parseFloat(distanceEl.value);
+
+            if (!f || !d || f <= 0 || d <= 0) {
+                displayResult(translations[currentLang].enterFocalDistance, true);
+                return;
+            }
+
+            const w = (c * d) / f;
+            sceneWidthEl.value = w.toFixed(2);
+            displayResult(`${translations[currentLang].sceneWidthResult} ${w.toFixed(2)} ${translations[currentLang].units}`);
+        });
+
+        // --- DORI Calculation Logic ---
+
+        calcDORIButton.addEventListener('click', () => {
+            const c = parseFloat(sensorWidthEl.value);
+            const f = parseFloat(focalLengthEl.value);
+            const res = parseFloat(resolutionEl.value);
+            const units = doriUnitsEl.value;
+
+            if (!f || f <= 0) {
+                displayResult(translations[currentLang].enterFocal, true);
+                clearDoriResults();
+                return;
+            }
+
+            const standards = DORI_STANDARDS[units];
+            const unitLabel = (units === 'meters') ? 'm' : 'ft';
+
+            // Formula: Distance = (Focal Length * Scene Width) / Sensor Width
+            // And: Scene Width = Horizontal Resolution / DORI_Value
+            // So: Distance = (Focal Length * (Horizontal Resolution / DORI_Value)) / Sensor Width
+            
+            const calcDoriDist = (doriValue) => {
+                const requiredSceneWidth = res / doriValue;
+                const distance = (f * requiredSceneWidth) / c;
+                return distance.toFixed(1);
+            };
+
+            doriDetectEl.textContent = `${calcDoriDist(standards.D)} ${unitLabel}`;
+            doriObserveEl.textContent = `${calcDoriDist(standards.O)} ${unitLabel}`;
+            doriRecognizeEl.textContent = `${calcDoriDist(standards.R)} ${unitLabel}`;
+            doriIdentifyEl.textContent = `${calcDoriDist(standards.I)} ${unitLabel}`;
+            
+            displayResult(translations[currentLang].doriCalculated, false);
+        });
+
+        // --- Global Clear Button ---
+        clearButton.addEventListener('click', () => {
+            focalLengthEl.value = '';
+            distanceEl.value = '';
+            sceneWidthEl.value = '';
+            
+            displayResult(translations[currentLang].enterValuesMsg);
+            resultEl.classList.remove('text-green-400', 'text-red-400');
+            
+            clearDoriResults();
+        });
+
+    </script>
+</body>
+</html>
