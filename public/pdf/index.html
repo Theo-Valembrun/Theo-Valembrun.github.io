@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--
+  Image to PDF Converter
+  
+  A modern web application for converting images to PDF with drag-and-drop functionality,
+  image reordering, and dark/light mode themes.
+  
+  Developer: Theov
+  License: MIT License
+  
+  AI Assistance Disclosure:
+  This project was developed with assistance from GitHub Copilot, an AI-powered coding assistant.
+  The AI helped with code structure, UI/UX patterns, documentation, and accessibility features.
+  All creative decisions and project vision remain the work of the human developer.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Image to PDF Converter</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    .dark {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent-primary: #f59e0b;
+      --accent-secondary: #f97316;
+      --border-color: #475569;
+    }
+    
+    .light {
+      --bg-primary: #f1f5f9;
+      --bg-secondary: #e2e8f0;
+      --bg-card: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --accent-primary: #059669;
+      --accent-secondary: #0891b2;
+      --border-color: #cbd5e1;
+    }
+    
+    .theme-bg-primary { background-color: var(--bg-primary); }
+    .theme-bg-secondary { background-color: var(--bg-secondary); }
+    .theme-bg-card { background-color: var(--bg-card); }
+    .theme-text-primary { color: var(--text-primary); }
+    .theme-text-secondary { color: var(--text-secondary); }
+    .theme-accent-primary { color: var(--accent-primary); }
+    .theme-accent-secondary { color: var(--accent-secondary); }
+    .theme-border { border-color: var(--border-color); }
+    
+    .theme-bg-accent-primary { background-color: var(--accent-primary); }
+    .theme-bg-accent-secondary { background-color: var(--accent-secondary); }
+    
+    .theme-gradient-bg {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    }
+    
+    .theme-gradient-text {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body class="light theme-bg-primary min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-300">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0 theme-gradient-bg"></div>
+  </div>
+  
+  <!-- Theme Toggle Button -->
+  <button id="theme-toggle" class="fixed top-6 right-6 z-20 p-3 theme-bg-card theme-text-primary rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-opacity-50">
+    <i id="theme-icon" class="fas fa-moon text-xl"></i>
+  </button>
+  
+  <main class="relative z-10 w-full max-w-4xl theme-bg-card backdrop-blur-lg rounded-2xl shadow-2xl p-8 transition-colors duration-300">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 theme-gradient-bg rounded-full mb-4">
+        <i class="fas fa-file-pdf text-white text-2xl"></i>
+      </div>
+      <h1 class="text-4xl font-bold theme-gradient-text mb-2">Image to PDF Converter</h1>
+      <p class="theme-text-secondary">Transform your images into beautiful PDF documents</p>
+    </div>
+    
+    <!-- Image Upload Section -->
+    <section aria-labelledby="image-to-pdf-title" class="mb-8">
+      <div id="drop-zone" tabindex="0" aria-label="Drag and drop images here" class="relative group flex flex-col items-center justify-center border-2 border-dashed theme-border rounded-2xl p-12 mb-6 theme-bg-secondary cursor-pointer transition-all duration-300 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-opacity-50">
+        <div class="absolute inset-0 theme-gradient-bg opacity-5 rounded-2xl group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div class="relative z-10 text-center">
+          <div class="w-20 h-20 mx-auto mb-4 theme-gradient-bg rounded-full flex items-center justify-center">
+            <i class="fas fa-cloud-upload-alt text-white text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold theme-text-primary mb-2">Upload Your Images</h3>
+          <p class="theme-accent-primary font-medium mb-2">Drag &amp; drop images here, or click to select files</p>
+          <p class="text-sm theme-text-secondary">Supports JPG and PNG formats</p>
+        </div>
+        <input id="image-input" type="file" accept="image/png, image/jpeg" multiple class="hidden" aria-label="Upload images">
+      </div>
+      
+      <!-- Image Preview Section -->
+      <div id="image-preview-container" class="hidden">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold theme-text-primary flex items-center">
+            <i class="fas fa-images theme-accent-primary mr-2"></i>
+            Selected Images
+          </h3>
+          <div class="flex items-center space-x-4">
+            <span class="text-sm theme-text-secondary">
+              <i class="fas fa-info-circle mr-1"></i>
+              Drag to reorder
+            </span>
+            <button id="clear-btn" class="px-4 py-2 bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300 rounded-lg hover:bg-red-200 dark:hover:bg-red-800 transition-colors duration-200 text-sm font-medium">
+              <i class="fas fa-trash mr-1"></i>Clear All
+            </button>
+          </div>
+        </div>
+        <div id="image-preview" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6"></div>
+      </div>
+      
+      <button id="convert-btn" class="w-full py-4 px-6 theme-gradient-bg text-white font-semibold rounded-xl hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg disabled:shadow-none" disabled>
+        <i class="fas fa-magic mr-2"></i>
+        Convert to PDF
+      </button>
+      <div id="image-status" class="mt-4 text-center text-sm"></div>
+    </section>
+  </main>
+  <script>
+    // Theme management
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+    
+    // Initialize theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.className = body.className.replace(/light|dark/, savedTheme);
+    updateThemeIcon(savedTheme);
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = body.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      body.className = body.className.replace(/light|dark/, newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+    
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+        themeIcon.className = 'fas fa-sun text-xl';
+      } else {
+        themeIcon.className = 'fas fa-moon text-xl';
+      }
+    }
+
+    // Image to PDF logic
+    const dropZone = document.getElementById('drop-zone');
+    const imageInput = document.getElementById('image-input');
+    const imagePreview = document.getElementById('image-preview');
+    const imagePreviewContainer = document.getElementById('image-preview-container');
+    const convertBtn = document.getElementById('convert-btn');
+    const clearBtn = document.getElementById('clear-btn');
+    const imageStatus = document.getElementById('image-status');
+    let selectedFiles = [];
+    let sortable;
+
+    // Initialize sortable functionality
+    function initSortable() {
+      if (sortable) {
+        sortable.destroy();
+      }
+      sortable = new Sortable(imagePreview, {
+        animation: 150,
+        ghostClass: 'opacity-50',
+        onEnd: function (evt) {
+          const newOrder = Array.from(imagePreview.children).map(item => 
+            parseInt(item.dataset.index)
+          );
+          const reorderedFiles = newOrder.map(index => selectedFiles[index]);
+          selectedFiles = reorderedFiles;
+          updatePreviewIndexes();
+        }
+      });
+    }
+
+    dropZone.addEventListener('click', () => imageInput.click());
+    dropZone.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        imageInput.click();
+      }
+    });
+
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('shadow-lg');
+    });
+    dropZone.addEventListener('dragleave', (e) => {
+      if (!dropZone.contains(e.relatedTarget)) {
+        dropZone.classList.remove('shadow-lg');
+      }
+    });
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('shadow-lg');
+      handleFiles(e.dataTransfer.files);
+    });
+
+    imageInput.addEventListener('change', (e) => {
+      handleFiles(e.target.files);
+    });
+
+    clearBtn.addEventListener('click', () => {
+      selectedFiles = [];
+      imagePreview.innerHTML = '';
+      imagePreviewContainer.classList.add('hidden');
+      convertBtn.disabled = true;
+      imageStatus.textContent = '';
+      imageInput.value = '';
+    });
+
+    function handleFiles(files) {
+      const validFiles = Array.from(files).filter(file => /image\/(jpeg|png)/.test(file.type));
+      if (validFiles.length === 0) {
+        showStatus('Please select valid image files (JPG, PNG).', 'error');
+        return;
+      }
+      
+      selectedFiles = [...selectedFiles, ...validFiles];
+      updatePreview();
+      convertBtn.disabled = false;
+      imageStatus.textContent = '';
+    }
+
+    function updatePreview() {
+      imagePreview.innerHTML = '';
+      imagePreviewContainer.classList.remove('hidden');
+      
+      selectedFiles.forEach((file, idx) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const container = document.createElement('div');
+          container.className = 'relative group cursor-move bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-200 hover:scale-105';
+          container.dataset.index = idx;
+          
+          container.innerHTML = `
+            <div class="relative">
+              <img src="${e.target.result}" alt="Image ${idx + 1}" class="w-full h-32 object-cover">
+              <div class="absolute top-2 right-2 flex space-x-1">
+                <div class="w-6 h-6 theme-bg-accent-primary text-white rounded-full flex items-center justify-center text-xs font-bold">
+                  ${idx + 1}
+                </div>
+                <button class="remove-btn w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200" data-index="${idx}">
+                  <i class="fas fa-times text-xs"></i>
+                </button>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+              <div class="absolute bottom-2 left-2 right-2">
+                <div class="text-white text-xs font-medium bg-black/60 rounded px-2 py-1 truncate opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  ${file.name}
+                </div>
+              </div>
+              <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <i class="fas fa-grip-vertical text-white text-xl drop-shadow-lg"></i>
+              </div>
+            </div>
+          `;
+          
+          const removeBtn = container.querySelector('.remove-btn');
+          removeBtn.addEventListener('click', (ev) => {
+            ev.stopPropagation();
+            removeImage(parseInt(ev.target.closest('button').dataset.index));
+          });
+          
+          imagePreview.appendChild(container);
+        };
+        reader.readAsDataURL(file);
+      });
+      
+      setTimeout(initSortable, 100);
+    }
+
+    function updatePreviewIndexes() {
+      const containers = imagePreview.querySelectorAll('[data-index]');
+      containers.forEach((container, idx) => {
+        container.dataset.index = idx;
+        const numberBadge = container.querySelector('.w-6.h-6.theme-bg-accent-primary');
+        const removeBtn = container.querySelector('.remove-btn');
+        if (numberBadge) numberBadge.textContent = idx + 1;
+        if (removeBtn) removeBtn.dataset.index = idx;
+      });
+    }
+
+    function removeImage(index) {
+      selectedFiles.splice(index, 1);
+      if (selectedFiles.length === 0) {
+        imagePreviewContainer.classList.add('hidden');
+        convertBtn.disabled = true;
+      } else {
+        updatePreview();
+      }
+    }
+
+    function showStatus(message, type) {
+      imageStatus.textContent = message;
+      const classes = {
+        error: 'text-red-600 dark:text-red-400',
+        success: 'text-green-600 dark:text-green-400',
+        info: 'theme-accent-primary'
+      };
+      imageStatus.className = `mt-4 text-center text-sm font-medium ${classes[type]}`;
+    }
+
+    convertBtn.addEventListener('click', async () => {
+      if (selectedFiles.length === 0) return;
+      
+      convertBtn.disabled = true;
+      convertBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Converting...';
+      showStatus('Converting images to PDF...', 'info');
+      
+      try {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+        
+        for (let i = 0; i < selectedFiles.length; i++) {
+          const file = selectedFiles[i];
+          const imgData = await readFileAsDataURL(file);
+          const img = new Image();
+          img.src = imgData;
+          await new Promise(resolve => { img.onload = resolve; });
+          
+          const pageWidth = pdf.internal.pageSize.getWidth();
+          const pageHeight = pdf.internal.pageSize.getHeight();
+          
+          let imgWidth = img.width;
+          let imgHeight = img.height;
+          const ratio = Math.min(pageWidth / imgWidth, pageHeight / imgHeight, 1);
+          imgWidth *= ratio;
+          imgHeight *= ratio;
+          
+          const x = (pageWidth - imgWidth) / 2;
+          const y = (pageHeight - imgHeight) / 2;
+          
+          if (i > 0) pdf.addPage();
+          pdf.addImage(imgData, 'JPEG', x, y, imgWidth, imgHeight);
+        }
+        
+        pdf.save('images.pdf');
+        showStatus(`PDF generated successfully with ${selectedFiles.length} images!`, 'success');
+        
+        setTimeout(() => {
+          selectedFiles = [];
+          imagePreview.innerHTML = '';
+          imagePreviewContainer.classList.add('hidden');
+          convertBtn.disabled = true;
+          imageInput.value = '';
+          imageStatus.textContent = '';
+        }, 3000);
+        
+      } catch (err) {
+        showStatus('Error during conversion. Please try again.', 'error');
+        convertBtn.disabled = false;
+      }
+      
+      convertBtn.innerHTML = '<i class="fas fa-magic mr-2"></i>Convert to PDF';
+      if (selectedFiles.length > 0) {
+        convertBtn.disabled = false;
+      }
+    });
+
+    function readFileAsDataURL(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+  </script>
+</body>
+</html>
