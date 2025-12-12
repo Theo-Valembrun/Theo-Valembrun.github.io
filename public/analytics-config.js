@@ -1,7 +1,7 @@
 // Google Analytics Configuration
 // This configuration is loaded conditionally based on user consent
 
-export default {
+const ANALYTICS_CONFIG = {
   // Your GA4 Measurement ID - empty by default, should be set via consent mechanism
   gaId: 'G-N8YF5MV8NJ',
   

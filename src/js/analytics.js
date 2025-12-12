@@ -25,9 +25,16 @@ export class AnalyticsManager {
     }
 
     try {
-      // Load analytics config
-      const configModule = await import('/analytics-config.js');
-      this.config = configModule.default;
+      // Load analytics config by injecting script tag
+      await this.loadConfigScript();
+      
+      // Config should now be available as global ANALYTICS_CONFIG
+      this.config = window.ANALYTICS_CONFIG;
+
+      if (!this.config) {
+        console.warn('Analytics: Configuration not found');
+        return;
+      }
 
       // Check privacy settings
       if (this.config.privacy && this.config.privacy.respect_dnt) {
@@ -49,6 +56,16 @@ export class AnalyticsManager {
     } catch (error) {
       console.error('Analytics: Failed to load', error);
     }
+  }
+
+  loadConfigScript() {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = '/analytics-config.js';
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error('Failed to load analytics config'));
+      document.head.appendChild(script);
+    });
   }
 
   loadGoogleAnalytics() {

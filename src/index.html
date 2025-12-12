@@ -23,9 +23,203 @@
     <link rel="icon" type="image/x-icon" href="/icons8-wired-network-16.png">
 </head>
 <body>
-    <%= header %>
-    <%= main %>
-    <%= footer %>
+    <!-- Navigation Header - See src/partials/header.html for reference -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">
+                <span class="brand-icon">T</span>
+                <span class="brand-text">Theo Valembrun</span>
+            </a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content - See src/partials/main.html for reference and placeholder sections -->
+    <!-- OWNER: The sections below have placeholder content. Copy full content from original index.html -->
+    <main>
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loader">
+                <div class="loader-ring"></div>
+                <div class="loader-text">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Hero Section - OWNER: Copy complete hero section from original index.html -->
+        <section id="home" class="hero">
+            <div class="hero-background">
+                <div class="hero-particles"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-greeting" data-aos="fade-up">
+                            <span class="greeting-text">Hello, I'm</span>
+                        </div>
+                        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                            <span class="title-main">Theo Valembrun</span>
+                            <span class="title-sub">IT Specialist & Network Engineer</span>
+                        </h1>
+                        <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
+                            Passionate IT professional specializing in network infrastructure, system administration, 
+                            and cybersecurity. I transform complex technical challenges into streamlined solutions 
+                            that drive business success.
+                        </p>
+                        <!-- OWNER: Add hero stats and CTA buttons from original index.html -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section - OWNER: Copy complete about section from original index.html -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">About Me</span>
+                    <h2 class="section-title">Building Robust IT Solutions</h2>
+                </div>
+                <!-- OWNER: Add full about content here -->
+            </div>
+        </section>
+
+        <!-- Skills Section - OWNER: Copy complete skills section from original index.html -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">Technical Skills</span>
+                    <h2 class="section-title">Expertise & Technologies</h2>
+                </div>
+                <!-- OWNER: Add full skills grid here -->
+            </div>
+        </section>
+
+        <!-- Projects Section - OWNER: Copy complete projects section from original index.html -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">Portfolio</span>
+                    <h2 class="section-title">Featured Projects & Achievements</h2>
+                </div>
+                <!-- OWNER: Add full projects grid here -->
+            </div>
+        </section>
+
+        <!-- Experience Section - OWNER: Copy complete experience section from original index.html -->
+        <section id="experience" class="experience">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">Career Journey</span>
+                    <h2 class="section-title">Professional Experience</h2>
+                </div>
+                <!-- OWNER: Add full experience timeline here -->
+            </div>
+        </section>
+
+        <!-- Certifications Section - OWNER: Copy complete certifications section from original index.html -->
+        <section id="certifications" class="certifications">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">Credentials</span>
+                    <h2 class="section-title">Certifications & Learning</h2>
+                </div>
+                <!-- OWNER: Add full certifications list here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">Get in Touch</span>
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p class="section-subtitle">
+                        Ready to discuss your next project or explore collaboration opportunities
+                    </p>
+                </div>
+                <div class="contact-cta">
+                    <h3>Ready to get started?</h3>
+                    <p>Choose your preferred way to reach out, and I'll get back to you as soon as possible.</p>
+                    <div class="cta-buttons">
+                        <a href="mailto:theo.valembrun@ieee.org" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            Email Me
+                        </a>
+                        <a href="tel:+50935419554" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            Call Me
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <h4>Connect with me</h4>
+                    <div class="social-items">
+                        <a href="https://linkedin.com/in/theovalembrun/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/Theo-Valembrun" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer - See src/partials/footer.html for reference -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-icon">T</span>
+                    <span class="brand-text">Theo Valembrun</span>
+                </div>
+                <p class="footer-text">
+                    Building the future of IT infrastructure, one solution at a time.
+                </p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#certifications">Certifications</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Theo Valembrun. All rights reserved.</p>
+                <p>Designed & Developed with <i class="fas fa-heart"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     
     <script type="module" src="/main.js"></script>
 </body>
