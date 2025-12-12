@@ -1,0 +1,26 @@
+{
+  "name": "theo-valembrun-portfolio",
+  "version": "3.0.0",
+  "description": "Theo Valembrun IT Specialist Portfolio - Built with Vite",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy:gh-pages": "npm run build && gh-pages -d dist"
+  },
+  "keywords": [
+    "portfolio",
+    "vite",
+    "it-specialist",
+    "network-engineer"
+  ],
+  "author": "Theo Valembrun",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "gh-pages": "^6.1.0",
+    "postcss": "^8.4.32",
+    "vite": "^5.0.7"
+  }
+}
