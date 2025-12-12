@@ -116,16 +116,25 @@ Visit the live website at: **https://theovalembrun.live**
 
 ## 🎨 Design Philosophy
 
-This v2.0 portfolio embraces:
+This portfolio embraces:
 
 * **Minimalist Professional Aesthetic:** Clean lines, ample whitespace, and focused content presentation
 * **User-Centric Design:** Intuitive navigation and clear information hierarchy
 * **Modern Web Standards:** Progressive enhancement and accessibility-first approach
 * **Performance-First:** Optimized for speed without sacrificing visual appeal
 
-## 🔄 Version 2.1 Updates
+## 🔄 Version History
 
-### New in v2.1 (July 2025)
+### Version 3.0 - Vite Migration (December 2025)
+* **Modern Build System:** Migrated to Vite 5 for lightning-fast development and optimized production builds
+* **Modular Architecture:** Refactored JavaScript into ES6 modules (theme, observer, analytics, app)
+* **Enhanced Accessibility:** Added fluid typography with CSS clamp(), prefers-reduced-motion support, and enhanced focus states
+* **Privacy-First Analytics:** Consent-gated Google Analytics loading with localStorage checks
+* **Automated Deployment:** GitHub Actions workflow for seamless deployment to GitHub Pages
+* **Improved Error Handling:** Retry logic with exponential backoff for network requests
+* **Performance Optimizations:** Code splitting, tree shaking, and minification via Vite build
+
+### Version 2.1 - Analytics & Compliance (July 2025)
 * **Professional Analytics:** Google Analytics 4 integration with comprehensive event tracking
 * **GDPR Compliance:** Cookiebot consent management for European visitors
 * **Enhanced Tracking:** User behavior analysis including navigation patterns, contact interactions, and engagement metrics
