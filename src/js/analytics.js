@@ -25,9 +25,13 @@ export class AnalyticsManager {
 
     async loadAnalytics() {
         try {
-            // Load analytics config from public directory
-            const module = await import('/analytics-config.js');
-            this.config = module.default;
+            // Load analytics config from public directory as JSON
+            const response = await fetch('/analytics-config.js');
+            const text = await response.text();
+            
+            // Remove comments and parse as JSON
+            const jsonText = text.replace(/\/\/.*/g, '').trim();
+            this.config = JSON.parse(jsonText);
 
             if (!this.config.gaId) {
                 console.warn('Analytics: No GA ID configured');
