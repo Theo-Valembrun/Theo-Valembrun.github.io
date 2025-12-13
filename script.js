@@ -15,25 +15,28 @@ class PortfolioApp {
         this.initializeIntersectionObserver();
         this.initializeContactForm();
         this.initializePerformanceOptimizations();
+        this.updateExperienceYears();
         
         // Remove loading screen once everything is ready
         this.removeLoadingScreen();
     }
-    // Automatic Years of Experience Calculator
-function updateExperience() {
-    const startYear = 2021;
-    const currentYear = new Date().getFullYear();
-    const years = currentYear - startYear;
-    
-    // Check if the element exists to avoid errors
-    const expElement = document.getElementById('exp-years');
-    if (expElement) {
-        expElement.textContent = years + "+";
-    }
-}
 
-// Run the function when the page loads
-document.addEventListener('DOMContentLoaded', updateExperience);
+    updateExperienceYears() {
+        const startYear = 2021;
+        const currentYear = new Date().getFullYear();
+        const years = currentYear - startYear;
+        const displayYears = Math.max(years, 1);
+
+        const expElement = document.getElementById('exp-years');
+        if (expElement) {
+            expElement.textContent = `${displayYears}+`;
+        }
+
+        const expInline = document.getElementById('exp-years-inline');
+        if (expInline) {
+            expInline.textContent = displayYears;
+        }
+    }
 
     setupEventListeners() {
         // Theme toggle
