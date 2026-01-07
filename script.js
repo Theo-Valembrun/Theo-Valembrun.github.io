@@ -70,12 +70,6 @@ class PortfolioApp {
         // Resize events (debounced)
         window.addEventListener('resize', this.debounce(this.handleResize.bind(this), 250));
 
-        // Contact form
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', this.handleFormSubmit.bind(this));
-        }
-
         // Keyboard navigation
         document.addEventListener('keydown', this.handleKeyboardNavigation.bind(this));
     }
@@ -599,33 +593,40 @@ class PortfolioApp {
 
     initializeWebVitals() {
         // Monitor Core Web Vitals (LCP, FID, CLS)
+        // Only log in development
+        const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        
         if ('PerformanceObserver' in window) {
-            // Largest Contentful Paint
-            new PerformanceObserver((list) => {
-                const entries = list.getEntries();
-                const lastEntry = entries[entries.length - 1];
-                console.log('LCP:', lastEntry.startTime);
-            }).observe({ entryTypes: ['largest-contentful-paint'] });
+            try {
+                // Largest Contentful Paint
+                new PerformanceObserver((list) => {
+                    const entries = list.getEntries();
+                    const lastEntry = entries[entries.length - 1];
+                    if (isDev) console.log('LCP:', lastEntry.startTime);
+                }).observe({ type: 'largest-contentful-paint', buffered: true });
 
-            // First Input Delay
-            new PerformanceObserver((list) => {
-                const entries = list.getEntries();
-                entries.forEach(entry => {
-                    console.log('FID:', entry.processingStart - entry.startTime);
-                });
-            }).observe({ entryTypes: ['first-input'] });
+                // First Input Delay
+                new PerformanceObserver((list) => {
+                    const entries = list.getEntries();
+                    entries.forEach(entry => {
+                        if (isDev) console.log('FID:', entry.processingStart - entry.startTime);
+                    });
+                }).observe({ type: 'first-input', buffered: true });
 
-            // Cumulative Layout Shift
-            new PerformanceObserver((list) => {
-                let clsValue = 0;
-                const entries = list.getEntries();
-                entries.forEach(entry => {
-                    if (!entry.hadRecentInput) {
-                        clsValue += entry.value;
-                    }
-                });
-                console.log('CLS:', clsValue);
-            }).observe({ entryTypes: ['layout-shift'] });
+                // Cumulative Layout Shift
+                new PerformanceObserver((list) => {
+                    let clsValue = 0;
+                    const entries = list.getEntries();
+                    entries.forEach(entry => {
+                        if (!entry.hadRecentInput) {
+                            clsValue += entry.value;
+                        }
+                    });
+                    if (isDev) console.log('CLS:', clsValue);
+                }).observe({ type: 'layout-shift', buffered: true });
+            } catch (e) {
+                // PerformanceObserver not supported for this entry type
+            }
         }
     }
 
@@ -701,6 +702,8 @@ window.addEventListener('unhandledrejection', (e) => {
 });
 
 // Service Worker Registration (for PWA capabilities)
+// Uncomment when sw.js is created
+/*
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
@@ -712,6 +715,7 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+*/
 
 // Initialize the application when DOM is ready
 if (document.readyState === 'loading') {
@@ -749,11 +753,12 @@ class AnalyticsTracker {
         // Track contact button clicks
         document.querySelectorAll('.contact-link, .btn[href*="mailto"], .btn[href*="tel"]').forEach(button => {
             button.addEventListener('click', (e) => {
-                const contactType = e.target.href.includes('mailto') ? 'email' : 
-                                  e.target.href.includes('tel') ? 'phone' : 'contact';
+                const href = e.currentTarget.href || '';
+                const contactType = href.includes('mailto') ? 'email' : 
+                                  href.includes('tel') ? 'phone' : 'contact';
                 this.trackEvent('contact_interaction', {
                     contact_method: contactType,
-                    button_text: e.target.textContent
+                    button_text: e.currentTarget.textContent?.trim() || ''
                 });
             });
         });
@@ -761,8 +766,9 @@ class AnalyticsTracker {
         // Track social media clicks
         document.querySelectorAll('.social-link').forEach(link => {
             link.addEventListener('click', (e) => {
-                const platform = e.target.href.includes('linkedin') ? 'linkedin' : 
-                               e.target.href.includes('github') ? 'github' : 'social';
+                const href = e.currentTarget.href || '';
+                const platform = href.includes('linkedin') ? 'linkedin' : 
+                               href.includes('github') ? 'github' : 'social';
                 this.trackEvent('social_click', {
                     platform: platform,
                     outbound: true
