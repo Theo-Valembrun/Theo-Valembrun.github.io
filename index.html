@@ -9,8 +9,11 @@
     <meta name="theme-color" content="#6366f1">
     <title>Theo Valembrun | IT Specialist Portfolio</title>
     
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
     <!-- Cookiebot Consent Management -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="20ee15d8-156d-40f3-a745-dbedd39f4bb5" type="text/javascript" async></script>
     
@@ -20,19 +23,17 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-N8YF5MV8NJ');
     </script>
     
     <!-- Preload critical resources -->
     <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="assets/img/Theo Valembrun Headshot.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="assets/img/Theo%20Valembrun%20Headshot.jpg" as="image" fetchpriority="high">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="icons8-wired-network-16.png">
@@ -47,7 +48,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
         <div class="nav-container">
             <a href="#home" class="nav-brand">
                 <span class="brand-icon">T</span>
@@ -66,7 +67,7 @@
             
             <div class="nav-controls">
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-moon" aria-hidden="true"></i>
                 </button>
                 <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
                     <span></span>
@@ -116,7 +117,7 @@
                         <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
                             <a href="#contact" class="btn btn-primary">
                                 <span>Get In Touch</span>
-                                <i class="fas fa-arrow-right"></i>
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
                             </a>
                             <a href="#projects" class="btn btn-secondary">
                                 <span>View My Work</span>
@@ -125,16 +126,16 @@
                     </div>
                     <div class="hero-visual" data-aos="fade-left" data-aos-delay="500">
                         <div class="hero-image">
-                            <img src="assets/img/Theo Valembrun Headshot.jpg" alt="Theo Valembrun - IT Specialist" class="profile-image" decoding="async" fetchpriority="high" width="300" height="300">
+                            <img src="assets/img/Theo%20Valembrun%20Headshot.jpg" alt="Theo Valembrun - IT Specialist" class="profile-image" decoding="async" fetchpriority="high" width="300" height="300">
                             <div class="floating-elements">
                                 <div class="floating-tech">
-                                    <i class="fab fa-cisco"></i>
+                                    <i class="fab fa-cisco" aria-hidden="true"></i>
                                 </div>
                                 <div class="floating-tech">
-                                    <i class="fab fa-microsoft"></i>
+                                    <i class="fab fa-microsoft" aria-hidden="true"></i>
                                 </div>
                                 <div class="floating-tech">
-                                    <i class="fas fa-network-wired"></i>
+                                    <i class="fas fa-network-wired" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +144,7 @@
             </div>
             <div class="scroll-indicator">
                 <div class="scroll-arrow">
-                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </div>
             </div>
         </section>
@@ -181,7 +182,7 @@
                         
                         <div class="about-highlights">
                             <div class="highlight-item">
-                                <i class="fas fa-graduation-cap"></i>
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                                 <div>
                                     <h4>Education</h4>
                                     <p>Bachelor's in Computer Science (In Progress)</p>
@@ -189,7 +190,7 @@
                                 </div>
                             </div>
                             <div class="highlight-item">
-                                <i class="fas fa-certificate"></i>
+                                <i class="fas fa-certificate" aria-hidden="true"></i>
                                 <div>
                                     <h4>Certifications</h4>
                                     <p>5 Completed, 4 In Progress</p>
@@ -241,7 +242,7 @@
                 <div class="skills-grid">
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="skill-icon">
-                            <i class="fas fa-network-wired"></i>
+                            <i class="fas fa-network-wired" aria-hidden="true"></i>
                         </div>
                         <h3>Network Infrastructure</h3>
                         <p>Advanced networking protocols, routing, switching, and network security implementation</p>
@@ -252,13 +253,13 @@
                             <span>DNS/DHCP</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="90"></div>
+                            <div class="progress-bar" data-progress="90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="skill-icon">
-                            <i class="fas fa-server"></i>
+                            <i class="fas fa-server" aria-hidden="true"></i>
                         </div>
                         <h3>System Administration</h3>
                         <p>Server management, virtualization, and enterprise system deployment</p>
@@ -269,13 +270,13 @@
                             <span>Group Policy</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="85"></div>
+                            <div class="progress-bar" data-progress="85" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="skill-icon">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         </div>
                         <h3>Cybersecurity</h3>
                         <p>Security protocols, threat assessment, and incident response management</p>
@@ -286,13 +287,13 @@
                             <span>Compliance</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="80"></div>
+                            <div class="progress-bar" data-progress="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
                         <div class="skill-icon">
-                            <i class="fas fa-cloud"></i>
+                            <i class="fas fa-cloud" aria-hidden="true"></i>
                         </div>
                         <h3>Cloud Technologies</h3>
                         <p>Cloud infrastructure management and deployment strategies</p>
@@ -303,13 +304,13 @@
                             <span>Cloud Security</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="75"></div>
+                            <div class="progress-bar" data-progress="75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
                         <div class="skill-icon">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
                         </div>
                         <h3>Monitoring & Analytics</h3>
                         <p>Network monitoring, performance analysis, and optimization</p>
@@ -320,13 +321,13 @@
                             <span>Performance Tuning</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="88"></div>
+                            <div class="progress-bar" data-progress="88" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     
                     <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
                         <div class="skill-icon">
-                            <i class="fas fa-headset"></i>
+                            <i class="fas fa-headset" aria-hidden="true"></i>
                         </div>
                         <h3>Technical Support</h3>
                         <p>Customer service, ticketing systems, and issue resolution</p>
@@ -337,7 +338,7 @@
                             <span>Documentation</span>
                         </div>
                         <div class="skill-progress">
-                            <div class="progress-bar" data-progress="95"></div>
+                            <div class="progress-bar" data-progress="95" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -356,17 +357,17 @@
                 </div>
                 
                 <div class="projects-grid">
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="project-image">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="#" class="project-link" aria-label="View details">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
+                                    <button class="project-link" aria-label="View project details">
+                                        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div class="project-placeholder">
-                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="project-content">
@@ -390,19 +391,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
                     
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="project-image">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="#" class="project-link" aria-label="View details">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
+                                    <button class="project-link" aria-label="View project details">
+                                        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div class="project-placeholder">
-                                <i class="fas fa-network-wired"></i>
+                                <i class="fas fa-network-wired" aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="project-content">
@@ -426,19 +427,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
                     
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="project-image">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="#" class="project-link" aria-label="View details">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
+                                    <button class="project-link" aria-label="View project details">
+                                        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div class="project-placeholder">
-                                <i class="fas fa-headset"></i>
+                                <i class="fas fa-headset" aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="project-content">
@@ -461,7 +462,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -481,7 +482,7 @@
                     <div class="timeline-item" data-aos="fade-up" data-aos-delay="50">
                         <div class="timeline-marker">
                             <div class="timeline-icon">
-                                <i class="fas fa-video"></i>
+                                <i class="fas fa-video" aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="timeline-content">
@@ -505,10 +506,11 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
                         <div class="timeline-marker">
                             <div class="timeline-icon">
-                                <i class="fas fa-network-wired"></i>
+                                <i class="fas fa-network-wired" aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="timeline-content">
@@ -535,7 +537,7 @@
                     <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                         <div class="timeline-marker">
                             <div class="timeline-icon">
-                                <i class="fas fa-comments"></i>
+                                <i class="fas fa-comments" aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="timeline-content">
@@ -562,7 +564,7 @@
                     <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
                         <div class="timeline-marker">
                             <div class="timeline-icon">
-                                <i class="fas fa-headset"></i>
+                                <i class="fas fa-headset" aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="timeline-content">
@@ -606,7 +608,7 @@
                         <div class="cert-items">
                             <div class="cert-item">
                                 <div class="cert-icon">
-                                    <i class="fas fa-network-wired"></i>
+                                    <i class="fas fa-network-wired" aria-hidden="true"></i>
                                 </div>
                                 <div class="cert-info">
                                     <h4>Cisco Certified Network Associate (CCNA)</h4>
@@ -615,7 +617,7 @@
                             </div>
                             <div class="cert-item">
                                 <div class="cert-icon">
-                                    <i class="fab fa-microsoft"></i>
+                                    <i class="fab fa-microsoft" aria-hidden="true"></i>
                                 </div>
                                 <div class="cert-info">
                                     <h4>Microsoft Azure Administrator Associate (AZ-104)</h4>
@@ -624,7 +626,7 @@
                             </div>
                             <div class="cert-item">
                                 <div class="cert-icon">
-                                    <i class="fas fa-shield-alt"></i>
+                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
                                 </div>
                                 <div class="cert-info">
                                     <h4>CompTIA Security+ (SY0-701)</h4>
@@ -633,7 +635,7 @@
                             </div>
                             <div class="cert-item">
                                 <div class="cert-icon">
-                                    <i class="fas fa-sitemap"></i>
+                                    <i class="fas fa-sitemap" aria-hidden="true"></i>
                                 </div>
                                 <div class="cert-info">
                                     <h4>ITIL 4 Foundation</h4>
@@ -648,7 +650,7 @@
                         <div class="cert-items">
                             <div class="cert-item completed">
                                 <div class="cert-icon">
-                                    <i class="fab fa-microsoft"></i>
+                                    <i class="fab fa-microsoft" aria-hidden="true"></i>
                                 </div>
                                 <div class="cert-info">
                                     <h4>Career Essentials in System Administration</h4>
@@ -657,7 +659,7 @@
                             </div>
                             <div class="cert-item completed">
                                 <div class="cert-icon">
-                                    <i class="fas fa-network-wired"></i>
+                                    <i class="fas fa-network-wired" aria-hidden="true"></i>
                                 </div>
                                 <div class="cert-info">
                                     <h4>CCNA: Enterprise Networking, Security, and Automation</h4>
@@ -666,7 +668,7 @@
                             </div>
                             <div class="cert-item completed">
                                 <div class="cert-icon">
-                                    <i class="fas fa-route"></i>
+                                    <i class="fas fa-route" aria-hidden="true"></i>
                                 </div>
                                 <div class="cert-info">
                                     <h4>CCNA: Switching, Routing, and Wireless Essentials</h4>
@@ -675,7 +677,7 @@
                             </div>
                             <div class="cert-item completed">
                                 <div class="cert-icon">
-                                    <i class="fas fa-globe"></i>
+                                    <i class="fas fa-globe" aria-hidden="true"></i>
                                 </div>
                                 <div class="cert-info">
                                     <h4>CCNA: Introduction to Networks</h4>
@@ -684,7 +686,7 @@
                             </div>
                             <div class="cert-item completed">
                                 <div class="cert-icon">
-                                    <i class="fab fa-google"></i>
+                                    <i class="fab fa-google" aria-hidden="true"></i>
                                 </div>
                                 <div class="cert-info">
                                     <h4>Google IT Support Professional Certificate</h4>
@@ -703,33 +705,35 @@
                 <div class="section-header" data-aos="fade-up">
                     <span class="section-tag">Get In Touch</span>
                     <h2 class="section-title">Let's Work Together</h2>
-                        <div class="contact-cta">
-                            <h3>Ready to get started?</h3>
-                            <p>Choose your preferred way to reach out, and I'll get back to you as soon as possible.</p>
-                            <div class="cta-buttons">
-                                <a href="mailto:theo.valembrun@ieee.org" class="btn btn-primary">
-                                    <i class="fas fa-envelope"></i>
-                                    Email Me
-                                </a>
-                                <a href="tel:+50935419554" class="btn btn-secondary">
-                                    <i class="fas fa-phone"></i>
-                                    Call Me
-                                </a>
-                            </div>
+                </div>
+                
+                <div class="contact-content" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-cta">
+                        <h3>Ready to get started?</h3>
+                        <p>Choose your preferred way to reach out, and I'll get back to you as soon as possible.</p>
+                        <div class="cta-buttons">
+                            <a href="mailto:theo.valembrun@ieee.org" class="btn btn-primary">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                Email Me
+                            </a>
+                            <a href="tel:+50935419554" class="btn btn-secondary">
+                                <i class="fas fa-phone" aria-hidden="true"></i>
+                                Call Me
+                            </a>
                         </div>
-                        
-                        <div class="social-links">
-                            <h4>Connect with me</h4>
-                            <div class="social-items">
-                                <a href="https://linkedin.com/in/theovalembrun/" target="_blank" class="social-link" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                    <span>LinkedIn</span>
-                                </a>
-                                <a href="https://github.com/Theo-Valembrun" target="_blank" class="social-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                    <span>GitHub</span>
-                                </a>
-                            </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Connect with me</h4>
+                        <div class="social-items">
+                            <a href="https://linkedin.com/in/theovalembrun/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/Theo-Valembrun" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                                <span>GitHub</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -748,7 +752,7 @@
                 <p class="footer-text">
                     Building the future of IT infrastructure, one solution at a time.
                 </p>
-                <div class="footer-links">
+                <nav class="footer-links" aria-label="Footer navigation">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
                     <a href="#skills">Skills</a>
@@ -756,21 +760,21 @@
                     <a href="#experience">Experience</a>
                     <a href="#certifications">Certifications</a>
                     <a href="#contact">Contact</a>
-                </div>
+                </nav>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Theo Valembrun. All rights reserved.</p>
-                <p>Designed & Developed with <i class="fas fa-heart"></i></p>
+                <p>&copy; 2026 Theo Valembrun. All rights reserved.</p>
+                <p>Designed & Developed with <i class="fas fa-heart" aria-hidden="true"></i></p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
