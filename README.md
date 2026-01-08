@@ -35,44 +35,73 @@ This repository hosts the professional portfolio and resume website showcasing m
 
 ## 🛠️ Technologies Used
 
+### Build Tools
+* **Vite 5:** Lightning-fast build tool with HMR (Hot Module Replacement)
+* **PostCSS:** CSS processing with autoprefixer for browser compatibility
+* **ES Modules:** Modern JavaScript module system
+
 ### Frontend Stack
 * **HTML5:** Semantic markup with accessibility features and modern web standards
-* **CSS3:** Advanced styling with CSS Custom Properties, Grid, Flexbox, and responsive design
-* **JavaScript ES6+:** Modern JavaScript with classes, modules, and performance optimizations
+* **CSS3:** Advanced styling with CSS Custom Properties, Grid, Flexbox, and fluid typography
+* **JavaScript ES6+:** Modular architecture with ES modules and performance optimizations
 
 ### Libraries & Frameworks
 * **Font Awesome 6.4.0:** Professional iconography
 * **Google Fonts (Inter):** Modern typography with variable font weights
-* **AOS Library:** Scroll-triggered animations
 * **CSS Grid & Flexbox:** Advanced layout systems
 
 ### Analytics & Tracking
-* **Google Analytics 4:** Professional visitor tracking and behavior analysis
-* **Cookiebot:** EU GDPR compliant cookie consent management
+* **Google Analytics 4:** Consent-gated visitor tracking and behavior analysis
 * **Enhanced Events:** Comprehensive user interaction monitoring
-* **Privacy-First:** Respects Do Not Track and user preferences
+* **Privacy-First:** Respects user consent preferences and Do Not Track signals
 
 ### Performance & Optimization
-* **Resource Preloading:** Critical CSS and font preloading
+* **Vite Build Optimization:** Code splitting, tree shaking, and minification
+* **Fluid Typography:** Using CSS clamp() for responsive text sizing
+* **Reduced Motion Support:** Respects prefers-reduced-motion user preference
+* **Accessible Focus States:** Enhanced keyboard navigation and focus visibility
 * **Mobile-First Approach:** Progressive enhancement for optimal mobile performance
-* **Optimized Assets:** Compressed images and efficient resource delivery
 
 ## 🌐 How to View
 
 ### Local Development
+
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Theo-Valembrun/portfolio-v2.git
+   git clone https://github.com/Theo-Valembrun/Theo-Valembrun.github.io.git
+   cd Theo-Valembrun.github.io
    ```
 
-2. **Navigate to the project directory:**
+2. **Install dependencies:**
    ```bash
-   cd portfolio-v2
+   npm install
    ```
 
-3. **Open with Live Server:**
-   - Use VS Code with Live Server extension, or
-   - Simply open `index.html` in your preferred web browser
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   This will start Vite dev server at `http://localhost:3000`
+
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
+   This creates an optimized build in the `dist/` directory
+
+5. **Preview production build:**
+   ```bash
+   npm run preview
+   ```
+
+### Deployment
+
+The site automatically deploys to GitHub Pages when you push to the `main` branch via GitHub Actions.
+
+**Manual deployment:**
+```bash
+npm run deploy:gh-pages
+```
 
 ### Live Demo
 Visit the live website at: **https://theovalembrun.live**
@@ -87,16 +116,25 @@ Visit the live website at: **https://theovalembrun.live**
 
 ## 🎨 Design Philosophy
 
-This v2.0 portfolio embraces:
+This portfolio embraces:
 
 * **Minimalist Professional Aesthetic:** Clean lines, ample whitespace, and focused content presentation
 * **User-Centric Design:** Intuitive navigation and clear information hierarchy
 * **Modern Web Standards:** Progressive enhancement and accessibility-first approach
 * **Performance-First:** Optimized for speed without sacrificing visual appeal
 
-## 🔄 Version 2.1 Updates
+## 🔄 Version History
 
-### New in v2.1 (July 2025)
+### Version 3.0 - Vite Migration (December 2025)
+* **Modern Build System:** Migrated to Vite 5 for lightning-fast development and optimized production builds
+* **Modular Architecture:** Refactored JavaScript into ES6 modules (theme, observer, analytics, app)
+* **Enhanced Accessibility:** Added fluid typography with CSS clamp(), prefers-reduced-motion support, and enhanced focus states
+* **Privacy-First Analytics:** Consent-gated Google Analytics loading with localStorage checks
+* **Automated Deployment:** GitHub Actions workflow for seamless deployment to GitHub Pages
+* **Improved Error Handling:** Retry logic with exponential backoff for network requests
+* **Performance Optimizations:** Code splitting, tree shaking, and minification via Vite build
+
+### Version 2.1 - Analytics & Compliance (July 2025)
 * **Professional Analytics:** Google Analytics 4 integration with comprehensive event tracking
 * **GDPR Compliance:** Cookiebot consent management for European visitors
 * **Enhanced Tracking:** User behavior analysis including navigation patterns, contact interactions, and engagement metrics
