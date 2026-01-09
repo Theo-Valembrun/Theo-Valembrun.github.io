@@ -64,11 +64,11 @@ class PortfolioApp {
             backToTop.addEventListener('click', this.scrollToTop);
         }
 
-        // Scroll events (throttled)
-        window.addEventListener('scroll', this.throttle(this.handleScroll.bind(this), 16));
+        // Scroll events (throttled) - use passive for better scroll performance
+        window.addEventListener('scroll', this.throttle(this.handleScroll.bind(this), 16), { passive: true });
         
-        // Resize events (debounced)
-        window.addEventListener('resize', this.debounce(this.handleResize.bind(this), 250));
+        // Resize events (debounced) - use passive for better performance
+        window.addEventListener('resize', this.debounce(this.handleResize.bind(this), 250), { passive: true });
 
         // Keyboard navigation
         document.addEventListener('keydown', this.handleKeyboardNavigation.bind(this));
@@ -680,12 +680,19 @@ class PortfolioApp {
     removeLoadingScreen() {
         const loadingScreen = document.getElementById('loading-screen');
         if (loadingScreen) {
-            setTimeout(() => {
+            // Use requestIdleCallback for non-critical removal, or setTimeout as fallback
+            const removeLoader = () => {
                 loadingScreen.classList.add('hidden');
                 setTimeout(() => {
                     loadingScreen.remove();
                 }, 500);
-            }, 1000);
+            };
+            
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(removeLoader, { timeout: 1000 });
+            } else {
+                setTimeout(removeLoader, 500);
+            }
         }
     }
 }
