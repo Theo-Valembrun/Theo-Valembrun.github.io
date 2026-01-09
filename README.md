@@ -1,6 +1,6 @@
-# Theo Valembrun - Professional IT Portfolio Website v2.1
+# Theo Valembrun - Professional IT Portfolio Website v2.2
 
-This repository hosts the professional portfolio and resume website showcasing my experience, skills, and certifications as an IT Specialist, Network Engineer, System Administrator, and Cybersecurity Professional. Version 2.1 adds comprehensive analytics tracking and GDPR compliance features.
+This repository hosts the professional portfolio and resume website showcasing my experience, skills, and certifications as an IT Specialist, Network Engineer, System Administrator, and Cybersecurity Professional. Version 2.2 brings significant performance optimizations, enhanced visual design, improved SEO, and better accessibility.
 
 ## 🚀 Features
 
@@ -16,13 +16,15 @@ This repository hosts the professional portfolio and resume website showcasing m
 * **Analytics & Compliance:** Professional Google Analytics 4 tracking with Cookiebot consent management for GDPR compliance and comprehensive user behavior insights.
 
 ### Enhanced User Experience
-* **Performance Optimized:** Fast loading times with preloaded critical resources, optimized images, and efficient CSS/JS delivery.
+* **Performance Optimized:** Critical CSS inlined for faster first paint, async font loading, DNS prefetch, passive event listeners, and requestIdleCallback for non-critical operations.
 
-* **Professional Animations:** Smooth fade-in animations, hover effects, and micro-interactions powered by AOS (Animate On Scroll) library.
+* **Glass Morphism Design:** Modern visual effects with gradient backgrounds, frosted glass cards, and elegant shadows for a premium look.
 
-* **Accessibility First:** ARIA labels, keyboard navigation support, screen reader compatibility, and semantic HTML structure.
+* **Professional Animations:** Smooth fade-in animations, hover effects, and micro-interactions with `prefers-reduced-motion` support for accessibility.
 
-* **SEO Optimized:** Comprehensive meta tags, structured data, and optimized content for search engine visibility.
+* **Accessibility First:** ARIA labels, keyboard navigation support, `:focus-visible` styles, screen reader compatibility, and semantic HTML structure.
+
+* **SEO Optimized:** Comprehensive meta tags, Open Graph/Twitter cards, canonical URLs, and JSON-LD structured data for enhanced search visibility.
 
 ### Content Showcase
 * **Real Project Portfolio:** Featuring actual implementations including Network Monitoring & Troubleshooting and Multi-Branch Network Implementation projects.
@@ -53,9 +55,13 @@ This repository hosts the professional portfolio and resume website showcasing m
 * **Privacy-First:** Respects Do Not Track and user preferences
 
 ### Performance & Optimization
-* **Resource Preloading:** Critical CSS and font preloading
-* **Mobile-First Approach:** Progressive enhancement for optimal mobile performance
-* **Optimized Assets:** Compressed images and efficient resource delivery
+* **Critical CSS Inlining:** Above-the-fold styles embedded in HTML for instant rendering
+* **Async Font Loading:** Non-blocking Google Fonts with font-display swap
+* **DNS Prefetch:** Pre-resolved connections for external resources
+* **Passive Event Listeners:** Optimized scroll and resize event handling
+* **requestIdleCallback:** Deferred non-critical operations for smoother UX
+* **content-visibility:** CSS containment for off-screen content optimization
+* **prefers-reduced-motion:** Respects user motion preferences for accessibility
 
 ## 🌐 How to View
 
@@ -87,25 +93,58 @@ Visit the live website at: **https://theovalembrun.live**
 
 ## 🎨 Design Philosophy
 
-This v2.0 portfolio embraces:
+This v2.2 portfolio embraces:
 
-* **Minimalist Professional Aesthetic:** Clean lines, ample whitespace, and focused content presentation
-* **User-Centric Design:** Intuitive navigation and clear information hierarchy
-* **Modern Web Standards:** Progressive enhancement and accessibility-first approach
-* **Performance-First:** Optimized for speed without sacrificing visual appeal
+* **Glass Morphism Aesthetic:** Modern frosted glass effects with subtle gradients and premium shadows
+* **User-Centric Design:** Intuitive navigation, clear information hierarchy, and responsive layouts
+* **Modern Web Standards:** Progressive enhancement, accessibility-first approach, and semantic markup
+* **Performance-First:** Optimized for speed with critical CSS inlining and async resource loading
+* **Visual Polish:** Enhanced color palette, gradient buttons, orbital tech icons, and refined typography
 
-## 🔄 Version 2.1 Updates
+## 🔄 Version History
 
-### New in v2.1 (July 2025)
+### New in v2.2 (January 2026)
+* **Performance Optimization:**
+  - Critical CSS inlined in HTML for faster first contentful paint
+  - Async font loading with font-display swap
+  - DNS prefetch for external resources (Google Fonts, Font Awesome, Analytics)
+  - Passive event listeners for scroll and resize events
+  - requestIdleCallback for deferred loading screen removal
+  - content-visibility CSS for off-screen optimization
+
+* **Enhanced Visual Design:**
+  - New gradient color palette with CSS custom properties
+  - Glass morphism effects on cards and navigation
+  - Redesigned hero section with orbital floating tech icons
+  - Improved button styles with gradient backgrounds and hover effects
+  - Enhanced skill cards with hover animations
+  - Completely redesigned timeline with alternating layout on desktop
+
+* **SEO & Social Improvements:**
+  - Canonical URL for proper search indexing
+  - Enhanced Open Graph meta tags for social sharing
+  - Twitter card meta tags
+  - JSON-LD structured data schema for rich snippets
+
+* **Accessibility Enhancements:**
+  - `:focus-visible` styles for keyboard navigation
+  - `::selection` custom styling
+  - `prefers-reduced-motion` media query support
+  - Improved color contrast ratios
+
+* **Bug Fixes:**
+  - Fixed missing Font Awesome icon (fa-cisco → fa-server)
+  - Fixed timeline icons overlapping job titles on desktop
+  - Improved responsive layout for experience section
+
+### Version 2.1 (July 2025)
 * **Professional Analytics:** Google Analytics 4 integration with comprehensive event tracking
 * **GDPR Compliance:** Cookiebot consent management for European visitors
 * **Enhanced Tracking:** User behavior analysis including navigation patterns, contact interactions, and engagement metrics
 * **Privacy-First:** Respects user preferences and Do Not Track signals
 * **Real-Time Insights:** Professional visitor analytics for portfolio optimization
 
-### Version 2.0 Improvements
-
-### From Version 1.0
+### Version 2.0
 * **Complete Redesign:** Modern card-based layout with improved visual hierarchy
 * **Enhanced Functionality:** Removed non-functional contact form in favor of direct contact methods
 * **Better Performance:** Optimized loading times and smoother animations
@@ -113,7 +152,7 @@ This v2.0 portfolio embraces:
 * **Real Content:** Replaced placeholder content with actual project implementations
 * **Streamlined Navigation:** More intuitive user flow and section organization
 
-### Technical Enhancements
+### Technical Stack
 * **Modern CSS Architecture:** CSS Custom Properties for theming and maintainability
 * **JavaScript Optimization:** ES6+ features with better error handling and performance
 * **Mobile Experience:** Enhanced mobile-first responsive design
@@ -158,4 +197,4 @@ This project is open-sourced under the MIT License. Feel free to use this code a
 
 ---
 
-**Built with ❤️ by Theo Valembrun | © 2025 | Designed & Developed with modern web standards**
+**Built with ❤️ by Theo Valembrun | © 2026 | Designed & Developed with modern web standards**
