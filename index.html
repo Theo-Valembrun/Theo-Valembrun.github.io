@@ -22,18 +22,20 @@
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Theo Valembrun Portfolio">
-    <meta property="og:title" content="Theo Valembrun | IT Specialist & Network Engineer">
-    <meta property="og:description" content="IT Specialist & Network Engineer with expertise in network infrastructure, system administration, and cybersecurity.">
+    <meta property="og:site_name" content="Theo Valembrun - Portfolio">
+    <meta property="og:title" content="Theo Valembrun - Network Engineer & IT Pro">
+    <meta property="og:description" content="Network Engineer & IT Professional with expertise in network infrastructure, system administration, and cybersecurity. Based in Haiti.">
     <meta property="og:image" content="https://theo-valembrun.github.io/assets/img/Theo%20Valembrun%20Headshot.jpg">
+    <meta property="og:image:alt" content="Theo Valembrun - Network Engineer & IT Professional">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="300">
     <meta property="og:url" content="https://theo-valembrun.github.io/">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Theo Valembrun | IT Specialist & Network Engineer">
-    <meta name="twitter:description" content="IT Specialist & Network Engineer with expertise in network infrastructure, system administration, and cybersecurity.">
+    <meta name="twitter:title" content="Theo Valembrun - Network Engineer & IT Pro">
+    <meta name="twitter:description" content="Network Engineer & IT Professional with expertise in network infrastructure, system administration, and cybersecurity.">
     <meta name="twitter:image" content="https://theo-valembrun.github.io/assets/img/Theo%20Valembrun%20Headshot.jpg">
+    <meta name="twitter:image:alt" content="Theo Valembrun - Network Engineer & IT Professional">
     
     <!-- Cookiebot Consent Management -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="20ee15d8-156d-40f3-a745-dbedd39f4bb5" type="text/javascript" async></script>
@@ -71,7 +73,9 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="icons8-wired-network-16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons8-wired-network-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons8-wired-network-16.png">
+    <link rel="apple-touch-icon" href="icons8-wired-network-16.png">
     
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -79,18 +83,39 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Theo Valembrun",
-        "jobTitle": "IT Specialist & Network Engineer",
+        "givenName": "Theo",
+        "familyName": "Valembrun",
+        "jobTitle": "Network Engineer & IT Professional",
+        "description": "IT Specialist with expertise in network infrastructure, system administration, and cybersecurity",
         "url": "https://theo-valembrun.github.io/",
         "image": "https://theo-valembrun.github.io/assets/img/Theo%20Valembrun%20Headshot.jpg",
+        "email": "theo.valembrun@ieee.org",
+        "telephone": "+509-35-41-95-54",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Port-au-Prince",
+            "addressCountry": "Haiti"
+        },
         "sameAs": [
             "https://linkedin.com/in/theovalembrun/",
             "https://github.com/Theo-Valembrun"
         ],
-        "knowsAbout": ["Network Administration", "System Administration", "Cybersecurity", "Cloud Computing", "CCTV"]
+        "knowsAbout": ["Network Administration", "System Administration", "Cybersecurity", "Cloud Computing", "CCTV", "Microsoft Azure", "Cisco Networking"],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "University"
+        },
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Digicel Group"
+        }
     }
     </script>
 </head>
 <body>
+    <!-- Skip Navigation Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loader">
@@ -131,7 +156,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-background">

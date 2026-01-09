@@ -145,6 +145,26 @@ html {
     outline-offset: 2px;
 }
 
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-medium);
+    z-index: var(--z-tooltip);
+    transition: top var(--transition-fast);
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: var(--space-4);
+}
+
 body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
