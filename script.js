@@ -22,7 +22,7 @@ class PortfolioApp {
     }
 
     updateExperienceYears() {
-        const startYear = 2021;
+        const startYear = 2023;
         const currentYear = new Date().getFullYear();
         const years = currentYear - startYear;
         const displayYears = Math.max(years, 1);
