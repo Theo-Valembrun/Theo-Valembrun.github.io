@@ -11,6 +11,7 @@ class PortfolioApp {
         this.setupEventListeners();
         this.initializeTheme();
         this.initializeNavigation();
+        this.initializeExperienceCards();
         this.initializeAnimations();
         this.initializeIntersectionObserver();
         this.initializeContactForm();
@@ -196,6 +197,49 @@ class PortfolioApp {
             link.classList.remove('active');
         });
         activeLink.classList.add('active');
+    }
+
+    initializeExperienceCards() {
+        const cards = Array.from(document.querySelectorAll('.xp-card'));
+        if (!cards.length) return;
+
+        const setCardState = (card, expanded) => {
+            const button = card.querySelector('.xp-card__header');
+            const panel = card.querySelector('.xp-card__panel');
+            if (!button || !panel) return;
+
+            card.classList.toggle('is-active', expanded);
+            button.setAttribute('aria-expanded', String(expanded));
+            panel.setAttribute('aria-hidden', String(!expanded));
+        };
+
+        const closeAll = (exceptCard) => {
+            cards.forEach((card) => {
+                if (card !== exceptCard) {
+                    setCardState(card, false);
+                }
+            });
+        };
+
+        cards.forEach((card) => {
+            const button = card.querySelector('.xp-card__header');
+            if (!button) return;
+
+            setCardState(card, false);
+
+            button.addEventListener('click', () => {
+                const isOpen = card.classList.contains('is-active');
+                closeAll(card);
+                setCardState(card, !isOpen);
+            });
+
+            button.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && card.classList.contains('is-active')) {
+                    setCardState(card, false);
+                    button.focus();
+                }
+            });
+        });
     }
 
     // Animation Management
